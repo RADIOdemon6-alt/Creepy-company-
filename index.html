@@ -2,6 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>creepy company</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- زر القائمة -->
+<button id="menuToggle" class="menu-toggle" onclick="toggleNav()">
+  <span class="menu-icon"></span>
+</button>
+
+<!-- القائمة الجانبية -->
+<div id="sidebar" class="sidebar">
+  <a href="#"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="#"><i class="fas fa-code"></i><span>Developers</span></a>
+  <a href="#"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
+  <a href="#"><i class="fas fa-comments"></i><span>Contact</span></a>
+  <a href="#"><i class="fas fa-broadcast-tower"></i><span>Channels</span></a>
+  <a href="#"><i class="fas fa-box-open"></i><span>Products</span></a>
+</div>
+
+<!-- زخارف -->
+<div class="decorations"></div>
+
+<!-- سكربت -->
+<script>
+  const sidebar = document.getElementById("sidebar");
+  const menuToggle = document.getElementById("menuToggle");
+  const menuIcon = document.querySelector(".menu-icon");
+
+  function toggleNav() {
+    const isOpen = sidebar.style.width === "200px";
+    sidebar.style.width = isOpen ? "0" : "200px";
+    menuIcon.classList.toggle("open", !isOpen);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const sidebarLinks = document.querySelectorAll('#sidebar a');
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        sidebar.style.width = "0";
+        menuIcon.classList.remove("open");
+      });
+    });
+  });
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <title>Alastor Menu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
@@ -17,16 +71,15 @@
 
 <!-- القائمة الجانبية -->
 <div id="sidebar" class="sidebar">
-  <a href="javascript:void(0)" class="close-btn" onclick="toggleNav()">&times;</a>
-  <a href="#"><i class="fas fa-home"></i> Home</a>
-  <a href="#"><i class="fas fa-code"></i> Developers</a>
-  <a href="#"><i class="fas fa-project-diagram"></i> Projects</a>
-  <a href="#"><i class="fas fa-comments"></i> Contact</a>
-  <a href="#"><i class="fas fa-broadcast-tower"></i> Channels</a>
-  <a href="#"><i class="fas fa-box-open"></i> Products</a>
+  <a href="#"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="#"><i class="fas fa-code"></i><span>Developers</span></a>
+  <a href="#"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
+  <a href="#"><i class="fas fa-comments"></i><span>Contact</span></a>
+  <a href="#"><i class="fas fa-broadcast-tower"></i><span>Channels</span></a>
+  <a href="#"><i class="fas fa-box-open"></i><span>Products</span></a>
 </div>
 
-<!-- رموز زخرفية -->
+<!-- زخارف -->
 <div class="decorations"></div>
 
 <!-- سكربت -->
@@ -36,8 +89,8 @@
   const menuIcon = document.querySelector(".menu-icon");
 
   function toggleNav() {
-    const isOpen = sidebar.style.width === "180px";
-    sidebar.style.width = isOpen ? "0" : "180px";
+    const isOpen = sidebar.style.width === "200px";
+    sidebar.style.width = isOpen ? "0" : "200px";
     menuIcon.classList.toggle("open", !isOpen);
   }
 
