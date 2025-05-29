@@ -1,37 +1,40 @@
-<!DOCTUPE html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>creepy company</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
- <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <!-- زر فتح القائمة -->
-<button class="menu-toggle" onclick="openSidebar()">☰ القائمة</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alastor Menu</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
 
-<!-- القائمة الجانبية -->
-<div id="mySidebar" class="sidebar">
-  <span class="close-btn" onclick="closeSidebar()">×</span>
-  <a href="#"><i class="fa-solid fa-house"></i> الرئيسية</a>
-<a href="#"><i class="fa-solid fa-laptop-code"></i> المطورون</a>
-<a href="#"><i class="fa-solid fa-folder-tree"></i> المشاريع</a>
-<a href="#"><i class="fa-solid fa-message"></i> للتواصل</a>
-<a href="#"><i class="fa-solid fa-bullhorn"></i> القنوات</a>
-<a href="#"><i class="fa-solid fa-box-open"></i> المنتجات</a>
+<!-- Open Sidebar Button -->
+<button class="menu-toggle" onclick="openNav()">☰ Menu</button>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+  <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+  <a href="#"><i class="fas fa-home"></i> Home</a>
+  <a href="#"><i class="fas fa-code"></i> Developers</a>
+  <a href="#"><i class="fas fa-project-diagram"></i> Projects</a>
+  <a href="#"><i class="fas fa-comments"></i> Contact</a>
+  <a href="#"><i class="fas fa-broadcast-tower"></i> Channels</a>
+  <a href="#"><i class="fas fa-box-open"></i> Products</a>
 </div>
 
-<!-- سكريبت فتح وإغلاق القائمة -->
-<script>
-  function openSidebar() {
-    document.getElementById("mySidebar").style.width = "165px";
-  }
+<!-- Decorative Symbols -->
+<div class="decorations"></div>
 
-  function closeSidebar() {
-    document.getElementById("mySidebar").style.width = "0";
+<!-- Sidebar Script -->
+<script>
+  function openNav() {
+    document.getElementById("sidebar").style.width = "180px";
+  }
+  function closeNav() {
+    document.getElementById("sidebar").style.width = "0";
   }
 </script>
 
-  </body>
+</body>
 </html>
