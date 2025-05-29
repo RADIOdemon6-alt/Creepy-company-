@@ -3,11 +3,31 @@
   <head>
     <meta charset="UTF-8">
     <title>creepy company</title>
- 
+ <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <!-- زر فتح القائمة -->
+<button class="menu-toggle" onclick="openSidebar()">☰ القائمة</button>
 
-</form>
+<!-- القائمة الجانبية -->
+<div id="mySidebar" class="sidebar">
+  <span class="close-btn" onclick="closeSidebar()">×</span>
+  <a href="#">الرئيسية</a>
+  <a href="#">من نحن</a>
+  <a href="#">الخدمات</a>
+  <a href="#">اتصل بنا</a>
+</div>
+
+<!-- سكريبت فتح وإغلاق القائمة -->
+<script>
+  function openSidebar() {
+    document.getElementById("mySidebar").style.width = "250px";
+  }
+
+  function closeSidebar() {
+    document.getElementById("mySidebar").style.width = "0";
+  }
+</script>
 
   </body>
 </html>
