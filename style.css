@@ -1,21 +1,27 @@
+/* الخط العام */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background: #111;
-  color: #fff;
+  background: #0b0b0b; /* خلفية داكنة */
+  color: #ffcc00; /* نص ذهبي */
 }
 
 /* زر فتح القائمة */
 .menu-toggle {
-  font-size: 28px;
+  font-size: 30px;
   cursor: pointer;
-  padding: 12px 20px;
-  background: #222;
+  padding: 15px 20px;
+  background: linear-gradient(90deg, #ff0000, #ff6600);
   color: #fff;
   border: none;
   width: 100%;
   text-align: right;
+  transition: background 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background: linear-gradient(90deg, #ff6600, #ffaa00);
 }
 
 /* القائمة الجانبية */
@@ -25,51 +31,73 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  background-color: #333;
+  background: #1a0000;
   overflow-x: hidden;
   transition: 0.3s;
   padding-top: 60px;
   z-index: 1000;
+  box-shadow: -3px 0 10px rgba(255, 80, 0, 0.5);
 }
 
 /* روابط القائمة */
 .sidebar a {
   padding: 15px 25px;
   text-decoration: none;
-  font-size: 18px;
-  color: #ddd;
-  display: block;
+  font-size: 20px;
+  color: #ffcc66;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   transition: 0.3s;
+  direction: rtl;
 }
 
 .sidebar a:hover {
-  background-color: #444;
+  background-color: #330000;
   color: #fff;
+  text-shadow: 0 0 5px #ff9933;
+}
+
+/* أيقونات داخل الروابط */
+.sidebar a i {
+  margin-left: 12px;
+  font-size: 20px;
+  color: #ff9933;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.sidebar a:hover i {
+  color: #ffaa00;
+  transform: scale(1.2);
 }
 
 /* زر الإغلاق */
 .close-btn {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  font-size: 28px;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
   cursor: pointer;
-  color: #fff;
+  color: #ff9999;
 }
 
 /* دعم الشاشات الصغيرة */
 @media screen and (max-width: 600px) {
   .menu-toggle {
-    font-size: 24px;
+    font-size: 26px;
     padding: 10px;
   }
 
   .sidebar a {
-    font-size: 16px;
+    font-size: 18px;
     padding: 12px 20px;
   }
 
+  .sidebar a i {
+    font-size: 18px;
+  }
+
   .close-btn {
-    font-size: 24px;
+    font-size: 26px;
   }
 }
