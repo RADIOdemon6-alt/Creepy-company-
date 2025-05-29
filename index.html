@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Alastor Menu</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<!-- Open Sidebar Button -->
-<button class="menu-toggle" onclick="openNav()">☰ Menu</button>
 
-<!-- Sidebar -->
+<!-- زر القائمة -->
+<button id="menuToggle" class="menu-toggle" onclick="toggleNav()">
+  <span class="menu-icon"></span>
+</button>
+
+<!-- القائمة الجانبية -->
 <div id="sidebar" class="sidebar">
-  <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+  <a href="javascript:void(0)" class="close-btn" onclick="toggleNav()">&times;</a>
   <a href="#"><i class="fas fa-home"></i> Home</a>
   <a href="#"><i class="fas fa-code"></i> Developers</a>
   <a href="#"><i class="fas fa-project-diagram"></i> Projects</a>
@@ -23,17 +26,30 @@
   <a href="#"><i class="fas fa-box-open"></i> Products</a>
 </div>
 
-<!-- Decorative Symbols -->
+<!-- رموز زخرفية -->
 <div class="decorations"></div>
 
-<!-- Sidebar Script -->
+<!-- سكربت -->
 <script>
-  function openNav() {
-    document.getElementById("sidebar").style.width = "180px";
+  const sidebar = document.getElementById("sidebar");
+  const menuToggle = document.getElementById("menuToggle");
+  const menuIcon = document.querySelector(".menu-icon");
+
+  function toggleNav() {
+    const isOpen = sidebar.style.width === "180px";
+    sidebar.style.width = isOpen ? "0" : "180px";
+    menuIcon.classList.toggle("open", !isOpen);
   }
-  function closeNav() {
-    document.getElementById("sidebar").style.width = "0";
-  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const sidebarLinks = document.querySelectorAll('#sidebar a');
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        sidebar.style.width = "0";
+        menuIcon.classList.remove("open");
+      });
+    });
+  });
 </script>
 
 </body>
