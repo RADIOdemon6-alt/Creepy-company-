@@ -298,3 +298,43 @@ body[dir="rtl"] .menu-list a {
   from { opacity: 0; }
   to { opacity: 1; }
 } 
+.channel-card {
+  width: 90%;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid #a30000;
+  border-radius: 20px;
+  box-shadow: inset 0 0 10px #a30000, 0 0 15px #ff000055;
+  color: #fff;
+  text-align: center;
+  font-family: 'Creepster', cursive;
+  position: relative;
+  animation: fadeUp 1s ease both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.channel-card:hover {
+  transform: scale(1.03);
+  box-shadow: inset 0 0 15px #ff0000, 0 0 25px #ff000088;
+}
+
+.channel-card h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #ff4d4d;
+  text-shadow: 0 0 3px #000, 0 0 2px #a30000;
+}
+
+.channel-card p {
+  font-size: 1em;
+  color: #ddd;
+  text-shadow: 0 0 2px #000;
+}
+
+.channel-card a {
+  text-decoration: none;
+  display: block;
+} 
