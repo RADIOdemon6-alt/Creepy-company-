@@ -59,7 +59,7 @@
         el.textContent = el.getAttribute(`data-${lang}`);
       });
       const langBtn = document.querySelector(".lang-toggle");
-      langBtn.textContent = lang === "en" ? "🌐 عربي" : "🌐 English";
+      langBtn.textContent = lang === "en" ? "🌐" : "🌐";
       document.body.dir = lang === "ar" ? "rtl" : "ltr";
     }
 
