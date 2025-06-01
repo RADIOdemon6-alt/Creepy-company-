@@ -28,20 +28,20 @@
   <h1 class="main-title">Radio Demon</h1>
   <div class="profile-section">
     <div class="profile-frame">
-      <img src="profile.jpg" alt="Radio Demon" class="profile-image">
+      <img src="https://files.catbox.moe/0nlvog.jpg" alt="Radio Demon" class="profile-image">
     </div>
     <div class="info-boxes">
-      <div class="info-box">💻 اللغات: JS, HTML, CSS</div>
-      <div class="info-box">🩸 الفريق: DEVORA</div>
-      <div class="info-box">🎂 العمر: 16 سنة</div>
+      <div class="info-box" style="animation-delay: 0s;">💻 اللغات: JS, HTML, CSS</div>
+      <div class="info-box" style="animation-delay: 0.25s;">🩸 الفريق: DEVORA</div>
+      <div class="info-box" style="animation-delay: 0.5s;">🎂 العمر: 16 سنة</div>
     </div>
   </div>
 </div>
 
 <!-- زر تغيير اللغة -->
-<button class="lang-toggle" onclick="toggleLang()">🌐</button>
+<button class="lang-toggle" onclick="toggleLanguage()">🌐</button>
 
-<!-- سكريبت القائمة واللغة -->
+<!-- سكريبت -->
 <script>
   function toggleMenu() {
     const menu = document.getElementById("menuList");
@@ -49,25 +49,25 @@
   }
 
   function toggleLanguage() {
-      const currentLang = localStorage.getItem("lang") || "en";
-      const newLang = currentLang === "en" ? "ar" : "en";
-      localStorage.setItem("lang", newLang);
-      applyLanguage(newLang);
-    }
+    const currentLang = localStorage.getItem("lang") || "ar";
+    const newLang = currentLang === "ar" ? "en" : "ar";
+    localStorage.setItem("lang", newLang);
+    applyLanguage(newLang);
+  }
 
-function applyLanguage(lang) {
-  const elements = document.querySelectorAll("[data-en]");
-  elements.forEach(el => {
-    el.textContent = el.getAttribute(`data-${lang}`);
-  });
-  document.body.dir = lang === "ar" ? "rtl" : "ltr";
-  document.body.style.textAlign = lang === "ar" ? "right" : "left";
-}
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const savedLang = localStorage.getItem("lang") || "en";
-      applyLanguage(savedLang);
+  function applyLanguage(lang) {
+    const elements = document.querySelectorAll("[data-en]");
+    elements.forEach(el => {
+      el.textContent = el.getAttribute(`data-${lang}`);
     });
+    document.body.dir = lang === "ar" ? "rtl" : "ltr";
+    document.body.style.textAlign = lang === "ar" ? "right" : "left";
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedLang = localStorage.getItem("lang") || "ar";
+    applyLanguage(savedLang);
+  });
 </script>
 
 </body>
