@@ -204,44 +204,38 @@ body[dir="rtl"] .menu-list a {
   }
 }
 /* قسم المعلومات */
-.profile-section {
+.profile-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  margin-top: 40px;
+  gap: 15px;
+  margin-top: 60px;
 }
 
-/* إطار الصورة */
-.profile-frame {
-  width: 150px;
-  height: 150px;
-  border: 4px solid crimson;
+.profile-image {
+  width: 140px;
+  height: 140px;
   border-radius: 20px;
-  padding: 6px;
-  background: linear-gradient(145deg, #1a0000, #2c0000);
+  background: url('profile.jpg') center/cover no-repeat;
   box-shadow:
     inset 2px 2px 6px #000,
-    inset -2px -2px 6px #550000,
-    0 0 10px #ff1a1a;
+    inset -2px -2px 6px #440000,
+    0 0 10px red;
+  border: 3px solid #ff1a1a;
 }
 
-/* الصورة داخل الإطار */
-.profile-image {
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  object-fit: cover;
-  display: block;
+.profile-name {
+  font-size: 32px;
+  color: #ff1a1a;
+  text-shadow: 0 0 8px #ff0000;
+  margin: 0;
 }
-
-/* مربعات المعلومات */
 .info-boxes {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin-top: 20px;
   align-items: center;
-  max-width: 90vw;
 }
 
 .info-box {
@@ -258,4 +252,26 @@ body[dir="rtl"] .menu-list a {
     -1px -1px 0 #330000;
   color: #ff1a1a;
   text-align: center;
+  min-width: 220px;
+
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.6s forwards;
 }
+
+.info-boxes .info-box:nth-child(1) {
+  animation-delay: 0s;
+}
+.info-boxes .info-box:nth-child(2) {
+  animation-delay: 0.25s;
+}
+.info-boxes .info-box:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}  
