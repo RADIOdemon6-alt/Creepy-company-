@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Radio Demon - Info</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- الشريط العلوي -->
+<div class="navbar">
+  <button class="menu-button" onclick="toggleMenu()">☰ القائمة</button>
+</div>
+
+<!-- القائمة الجانبية -->
+<div class="menu-list" id="menuList">
+  <a href="index.html">الرئيسية</a>
+  <a href="info.html">المعلومات</a>
+  <a href="projects.html">المشاريع</a>
+  <a href="channels.html">القنوات</a>
+  <a href="contact.html">للتواصل</a>
+  <a href="shop.html">المنتجات</a>
+</div>
+
+<!-- المحتوى -->
+<div class="main-content">
+  <h1 class="main-title">Radio Demon</h1>
+  <div class="profile-section">
+    <div class="profile-frame">
+      <img src="images/profile.jpg" alt="Radio Demon" class="profile-image">
+    </div>
+    <div class="info-boxes">
+      <div class="info-box">💻 اللغات: JS, HTML, CSS</div>
+      <div class="info-box">🩸 الفريق: DEVORA</div>
+      <div class="info-box">🎂 العمر: 16 سنة</div>
+    </div>
+  </div>
+</div>
+
+<!-- زر تغيير اللغة -->
+<button class="lang-toggle" onclick="toggleLang()">🌐</button>
+
+<!-- سكريبت القائمة واللغة -->
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("menuList");
+    menu.classList.toggle("show");
+  }
+
+  function toggleLang() {
+    const html = document.documentElement;
+    const current = html.getAttribute("dir");
+    html.setAttribute("dir", current === "rtl" ? "ltr" : "rtl");
+  }
+</script>
+
+</body>
+</html>
