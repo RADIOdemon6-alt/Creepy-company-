@@ -68,14 +68,31 @@ body {
 
 /* القائمة */
 .menu-list {
+.menu-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background: rgba(0, 0, 0, 0.95);
   position: absolute;
   top: 60px;
-  left: 10px;
+  left: 20px; /* الوضع الافتراضي للإنجليزية */
+  border-radius: 10px;
+  border: 1px solid red;
+  box-shadow: 0 0 15px red;
+  padding: 10px;
   z-index: 5;
+  transition: all 0.5s ease;
 }
+
+body[dir="rtl"] .menu-list {
+  left: auto;
+  right: 20px;
+  align-items: flex-end;
+}
+
+body[dir="rtl"] .menu-list a {
+  text-align: right;
+} 
 
 .menu-list a {
   display: block;
