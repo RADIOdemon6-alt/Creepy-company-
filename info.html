@@ -28,7 +28,7 @@
   <h1 class="main-title">Radio Demon</h1>
   <div class="profile-section">
     <div class="profile-frame">
-      <img src="images/profile.jpg" alt="Radio Demon" class="profile-image">
+      <img src="profile.jpg" alt="Radio Demon" class="profile-image">
     </div>
     <div class="info-boxes">
       <div class="info-box">💻 اللغات: JS, HTML, CSS</div>
@@ -48,11 +48,26 @@
     menu.classList.toggle("show");
   }
 
-  function toggleLang() {
-    const html = document.documentElement;
-    const current = html.getAttribute("dir");
-    html.setAttribute("dir", current === "rtl" ? "ltr" : "rtl");
-  }
+  function toggleLanguage() {
+      const currentLang = localStorage.getItem("lang") || "en";
+      const newLang = currentLang === "en" ? "ar" : "en";
+      localStorage.setItem("lang", newLang);
+      applyLanguage(newLang);
+    }
+
+function applyLanguage(lang) {
+  const elements = document.querySelectorAll("[data-en]");
+  elements.forEach(el => {
+    el.textContent = el.getAttribute(`data-${lang}`);
+  });
+  document.body.dir = lang === "ar" ? "rtl" : "ltr";
+  document.body.style.textAlign = lang === "ar" ? "right" : "left";
+}
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("lang") || "en";
+      applyLanguage(savedLang);
+    });
 </script>
 
 </body>
