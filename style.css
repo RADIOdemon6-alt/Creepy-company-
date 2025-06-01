@@ -6,6 +6,7 @@ body {
   background-color: #000;
   color: #ff1a1a;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* الخلفية */
@@ -31,6 +32,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
 
 /* الحاوية */
@@ -38,8 +40,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 100%;
+  box-sizing: border-box;
 }
 
 /* زر القائمة */
@@ -54,59 +57,52 @@ body {
   box-shadow: 0 0 8px red;
 }
 
-/* القائمة بشكل مربعات */
+/* القائمة: مربعات فوق بعض بدون خلفية أو ظل */
 .menu-list {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 10px;
-  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 60px;
   left: 20px;
-  border-radius: 10px;
-  border: 1px solid red;
-  box-shadow: 0 0 15px red;
-  padding: 10px;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  padding: 0;
+  margin: 0;
+  z-index: 5;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
 /* عناصر القائمة */
 .menu-list a {
-  background: #1a0000;
-  border: 1px solid crimson;
-  padding: 12px;
-  text-align: center;
   color: #ff4d4d;
   text-decoration: none;
   font-size: 18px;
-  border-radius: 10px;
-  box-shadow: 0 0 5px crimson;
+  padding: 10px 0;
+  text-align: left;
   opacity: 0;
   transform: translateY(-20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* عند الفتح تظهر تدريجياً */
+/* ظهور تدريجي مع تأخير */
+.menu-list.fade-in a:nth-child(1) { transition-delay: 0.25s; }
+.menu-list.fade-in a:nth-child(2) { transition-delay: 0.5s; }
+.menu-list.fade-in a:nth-child(3) { transition-delay: 0.75s; }
+.menu-list.fade-in a:nth-child(4) { transition-delay: 1s; }
+.menu-list.fade-in a:nth-child(5) { transition-delay: 1.25s; }
+.menu-list.fade-in a:nth-child(6) { transition-delay: 1.5s; }
+
 .menu-list.fade-in a {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* توقيت متسلسل */
-.menu-list.fade-in a:nth-child(1) { transition-delay: 0.2s; }
-.menu-list.fade-in a:nth-child(2) { transition-delay: 1.2s; }
-.menu-list.fade-in a:nth-child(3) { transition-delay: 2.2s; }
-.menu-list.fade-in a:nth-child(4) { transition-delay: 3.2s; }
-.menu-list.fade-in a:nth-child(5) { transition-delay: 4.2s; }
-.menu-list.fade-in a:nth-child(6) { transition-delay: 5.2s; }
-
 .menu-list a:hover {
-  background-color: #ff1a1a30;
   color: white;
   text-shadow: 0 0 8px red;
 }
 
-/* إخفاء عند الإغلاق */
+/* إخفاء */
 .hidden {
   opacity: 0;
   transform: translateY(-20px);
@@ -119,6 +115,11 @@ body {
   text-align: center;
   z-index: 2;
   position: relative;
+  max-width: 100vw;
+  overflow-wrap: break-word;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
 }
 
 .main-title {
@@ -132,16 +133,17 @@ body {
   color: #ff9999;
 }
 
-/* زر اللغة - دائرة كوكب */
+/* زر اللغة: كوكب بدون مربع مع أنيميشن */
 .lang-toggle {
   background: transparent;
   border: none;
-  font-size: 22px;
+  font-size: 24px;
   cursor: pointer;
   color: #ff1a1a;
-  margin-left: 10px;
   animation: pulse 2s infinite;
   transition: transform 0.3s ease;
+  margin-left: 10px;
+  padding: 5px;
 }
 
 .lang-toggle:hover {
@@ -149,7 +151,7 @@ body {
   color: #fff;
 }
 
-/* حركة نبض */
+/* نبض */
 @keyframes pulse {
   0% { text-shadow: 0 0 5px red; }
   50% { text-shadow: 0 0 20px crimson; }
@@ -159,16 +161,15 @@ body {
 /* تجاوب */
 @media (min-width: 600px) {
   .menu-list {
-    grid-template-columns: repeat(6, auto);
+    flex-direction: row;
     position: static;
     background: none;
     box-shadow: none;
     border: none;
-    padding: 0;
   }
 
   .menu-list a {
-    margin: 0 5px;
+    margin: 0 10px;
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
