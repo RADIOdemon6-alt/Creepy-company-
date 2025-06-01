@@ -208,3 +208,11 @@ body {
   60%  { opacity: 0.8; text-shadow: 0 0 30px #ff0000; }
   100% { opacity: 1; text-shadow: 0 0 15px #ff1a1a; }
 }
+.intro {
+  max-width: 700px;
+  margin: 40px auto;
+  font-size: 20px;
+  text-align: center;
+  color: #ff9999;
+  line-height: 1.7;
+} 
