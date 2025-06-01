@@ -31,16 +31,16 @@ body {
   box-shadow: 0 0 15px #ff000066;
 }
 
-/* زر القائمة */
+/* زر القائمة ككلمة فقط */
 .menu-button {
   font-size: 22px;
-  background-color: transparent;
+  background: none;
   color: #fff;
-  border: 2px solid #ff1a1a;
-  padding: 6px 12px;
-  border-radius: 8px;
+  border: none;
+  padding: 0;
+  border-radius: 0;
   cursor: pointer;
-  box-shadow: 0 0 8px red;
+  box-shadow: none;
 }
 
 /* زر اللغة */
@@ -71,19 +71,18 @@ body[dir="rtl"] .lang-toggle {
   left: 20px;
 }
 
-/* القائمة */
+/* القائمة بدون خلفية ولا حواف */
 .menu-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: rgba(0, 0, 0, 0.95);
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
   position: absolute;
   top: 60px;
   left: 20px;
-  border-radius: 10px;
-  border: 1px solid red;
-  box-shadow: 0 0 15px red;
-  padding: 10px;
   z-index: 5;
   transition: all 0.5s ease;
 }
@@ -94,29 +93,29 @@ body[dir="rtl"] .menu-list {
   align-items: flex-end;
 }
 
+body[dir="rtl"] .menu-list a {
+  text-align: right;
+}
+
+/* أزرار القائمة */
 .menu-list a {
   display: block;
-  width: 140px;
-  padding: 16px;
+  padding: 5px 8px;
   background: linear-gradient(145deg, #2c0000, #1a0000);
   color: #ff1a1a;
   text-align: center;
   text-decoration: none;
-  border-radius: 12px;
+  border-radius: 8px;
   font-size: 18px;
   box-shadow:
-    inset 2px 2px 5px #1a0000,
-    inset -2px -2px 5px #5a0000,
-    0 0 8px red;
+    inset 1px 1px 2px #1a0000,
+    inset -1px -1px 2px #5a0000,
+    0 0 5px red;
   text-shadow: 1px 1px 0 #000, -1px -1px 0 #2a0000;
   opacity: 0;
   transform: translateY(-20px);
   pointer-events: none;
   max-width: 90vw;
-}
-
-body[dir="rtl"] .menu-list a {
-  text-align: right;
 }
 
 /* تأثير ظهور العناصر */
