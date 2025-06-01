@@ -8,9 +8,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- خلفية متحركة -->
-  <canvas id="bloodCanvas"></canvas>
-
   <!-- شريط علوي -->
   <header class="navbar">
     <div class="container">
@@ -38,13 +35,12 @@
   </main>
 
   <!-- سكريبتات -->
-  
   <script>
-      function toggleMenu() {
-  const menu = document.getElementById("menuList");
-  menu.classList.toggle("show");
-  menu.classList.toggle("hidden");
-  menu.classList.toggle("fade-in");
+    function toggleMenu() {
+      const menu = document.getElementById("menuList");
+      menu.classList.toggle("show");
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("fade-in");
     }
 
     function toggleLanguage() {
@@ -54,14 +50,14 @@
       applyLanguage(newLang);
     }
 
-function applyLanguage(lang) {
-  const elements = document.querySelectorAll("[data-en]");
-  elements.forEach(el => {
-    el.textContent = el.getAttribute(`data-${lang}`);
-  });
-  document.body.dir = lang === "ar" ? "rtl" : "ltr";
-  document.body.style.textAlign = lang === "ar" ? "right" : "left";
-}
+    function applyLanguage(lang) {
+      const elements = document.querySelectorAll("[data-en]");
+      elements.forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+      document.body.dir = lang === "ar" ? "rtl" : "ltr";
+      document.body.style.textAlign = lang === "ar" ? "right" : "left";
+    }
 
     window.addEventListener("DOMContentLoaded", () => {
       const savedLang = localStorage.getItem("lang") || "en";
