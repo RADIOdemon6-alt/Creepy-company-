@@ -1,47 +1,63 @@
 const canvas = document.getElementById("bloodCanvas");
 const ctx = canvas.getContext("2d");
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let drops = [];
+let bloodPuddles = [];
 
-function createDrop() {
-  const drop = {
-    x: Math.random() * canvas.width,
-    y: 0,
-    size: Math.random() * 2 + 2,
-    speed: Math.random() * 5 + 2,
-    opacity: Math.random() * 0.5 + 0.3
-  };
-  drops.push(drop);
+function createBlood() {
+  const x = Math.random() * canvas.width;
+  const y = Math.random() * canvas.height * 0.5; // تنزل من منتصف الشاشة
+  const radius = Math.random() * 10 + 5;
+  const spreadSpeed = Math.random() * 0.3 + 0.05;
+
+  bloodPuddles.push({ x, y, radius, spreadSpeed, alpha: 1 });
 }
 
-function drawDrop(drop) {
+function drawBlood(puddle) {
+  const gradient = ctx.createRadialGradient(
+    puddle.x,
+    puddle.y,
+    0,
+    puddle.x,
+    puddle.y,
+    puddle.radius
+  );
+  gradient.addColorStop(0, `rgba(139, 0, 0, ${puddle.alpha})`);
+  gradient.addColorStop(1, `rgba(80, 0, 0, 0)`);
+
   ctx.beginPath();
-  ctx.fillStyle = `rgba(255, 0, 0, ${drop.opacity})`;
-  ctx.arc(drop.x, drop.y, drop.size, 0, Math.PI * 2);
+  ctx.fillStyle = gradient;
+  ctx.arc(puddle.x, puddle.y, puddle.radius, 0, Math.PI * 2);
   ctx.fill();
 }
 
-function updateDrops() {
+function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let i = 0; i < drops.length; i++) {
-    drops[i].y += drops[i].speed;
-    drawDrop(drops[i]);
-    if (drops[i].y > canvas.height) {
-      drops.splice(i, 1);
+
+  for (let i = 0; i < bloodPuddles.length; i++) {
+    const p = bloodPuddles[i];
+    drawBlood(p);
+
+    // توسّع تدريجي
+    p.radius += p.spreadSpeed;
+    p.alpha -= 0.0008;
+
+    if (p.alpha <= 0.01) {
+      bloodPuddles.splice(i, 1);
       i--;
     }
   }
+
+  if (Math.random() < 0.4) {
+    createBlood();
+  }
+
+  requestAnimationFrame(update);
 }
 
-function animate() {
-  createDrop();
-  updateDrops();
-  requestAnimationFrame(animate);
-}
-
-animate();
+update();
 
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
