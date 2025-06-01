@@ -54,15 +54,14 @@
       applyLanguage(newLang);
     }
 
-    function applyLanguage(lang) {
-      const elements = document.querySelectorAll("[data-en]");
-      elements.forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
-      });
-      const langBtn = document.querySelector(".lang-toggle");
-      langBtn.textContent = lang === "en" ? "🌐" : "🌐";
-      document.body.dir = lang === "ar" ? "rtl" : "ltr";
-    }
+function applyLanguage(lang) {
+  const elements = document.querySelectorAll("[data-en]");
+  elements.forEach(el => {
+    el.textContent = el.getAttribute(`data-${lang}`);
+  });
+  document.body.dir = lang === "ar" ? "rtl" : "ltr";
+  document.body.style.textAlign = lang === "ar" ? "right" : "left";
+}
 
     window.addEventListener("DOMContentLoaded", () => {
       const savedLang = localStorage.getItem("lang") || "en";
