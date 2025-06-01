@@ -268,3 +268,33 @@ body[dir="rtl"] .menu-list a {
     transform: translateY(0);
   }
 }  
+.toggle-button {
+  background-color: #6a0000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 1.1em;
+  border-radius: 10px;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.show {
+  display: block;
+  opacity: 1;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+} 
