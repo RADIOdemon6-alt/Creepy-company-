@@ -2,112 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>creepy company</title>
+  <title>Home | Creepy Alastor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- خلفية متحركة -->
+  <canvas id="bloodCanvas"></canvas>
 
-<!-- زر القائمة -->
-<button id="menuToggle" class="menu-toggle" onclick="toggleNav()">
-  <span class="menu-icon"></span>
-</button>
+  <!-- شريط علوي -->
+  <header class="navbar">
+    <div class="container">
+      <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+      <nav id="menuList" class="menu-list hidden">
+        <a href="index.html">Home</a>
+        <a href="info.html">Info</a>
+        <a href="projects.html">Projects</a>
+        <a href="channels.html">Channels</a>
+        <a href="contact.html">Contact</a>
+        <a href="products.html">Products</a>
+      </nav>
+    </div>
+  </header>
+<!-- الزر في الشريط العلوي -->
+<button class="lang-toggle" onclick="toggleLanguage()">🌐 عربي</button>
+  <header class="navbar">
+  <div class="container">
+    <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+    <button class="lang-toggle" onclick="toggleLanguage()">🌐 عربي</button>
+    <nav id="menuList" class="menu-list hidden">
+      <a href="#" data-en="Home" data-ar="الرئيسية">Home</a>
+      <a href="#" data-en="Info" data-ar="معلومات">Info</a>
+      <a href="#" data-en="Projects" data-ar="مشاريع">Projects</a>
+      <a href="#" data-en="Channels" data-ar="القنوات">Channels</a>
+      <a href="#" data-en="Contact" data-ar="للتواصل">Contact</a>
+      <a href="#" data-en="Products" data-ar="المنتجات">Products</a>
+    </nav>
+  </div>
+</header>
 
-<!-- القائمة الجانبية -->
-<div id="sidebar" class="sidebar">
-  <a href="#"><i class="fas fa-home"></i><span>Home</span></a>
-  <a href="page.html"><i class="fas fa-code"></i><span>Developers</span></a>
-  <a href="#"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
-  <a href="#"><i class="fas fa-comments"></i><span>Contact</span></a>
-  <a href="#"><i class="fas fa-broadcast-tower"></i><span>Channels</span></a>
-  <a href="#"><i class="fas fa-box-open"></i><span>Products</span></a>
-</div>
-<h1 class="main-welcome"> مرحباً بك في الموقع الرسمي لفريق Creepy</h1>
-  <section class="intro">
-  <p>نحن فريق <strong>Creepy</strong> المتخصصون في تطوير البوتات والمشاريع التقنية الغامضة والمميزة 👁‍🗨</p>
-  <p>انضم إلينا واستكشف عالمنا الدموي المظلم.</p>
-  </section>
-<!-- زخارف -->
-<div class="decorations"></div>
+<main class="main-content">
+  <h1 class="main-title" data-en="Welcome to Alastor's Bloody Realm" data-ar="مرحبًا بك في عالم ألاستور الدموي">Welcome</h1>
+  <p class="main-subtitle" data-en="Explore the dark side of creativity & code 🩸" data-ar="اكتشف الجانب المظلم من الإبداع والبرمجة 🩸">Explore</p>
+</main>
+  <!-- العنوان -->
+  <main class="main-content">
+    <h1 class="main-title">Welcome to Alastor's Bloody Realm</h1>
+    <p class="main-subtitle">Explore the dark side of creativity & code 🩸</p>
+  </main>
 
-<!-- سكربت -->
-<script>
-  const sidebar = document.getElementById("sidebar");
-  const menuToggle = document.getElementById("menuToggle");
-  const menuIcon = document.querySelector(".menu-icon");
-
-  function toggleNav() {
-    const isOpen = sidebar.style.width === "200px";
-    sidebar.style.width = isOpen ? "0" : "200px";
-    menuIcon.classList.toggle("open", !isOpen);
+  <script src="background.js"></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menuList");
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("fade-in");
+      function toggleLanguage() {
+    const currentLang = localStorage.getItem("lang") || "en";
+    const newLang = currentLang === "en" ? "ar" : "en";
+    localStorage.setItem("lang", newLang);
+    applyLanguage(newLang);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const sidebarLinks = document.querySelectorAll('#sidebar a');
-    sidebarLinks.forEach(link => {
-      link.addEventListener('click', function () {
-        sidebar.style.width = "0";
-        menuIcon.classList.remove("open");
-      });
+  function applyLanguage(lang) {
+    const elements = document.querySelectorAll("[data-en]");
+    elements.forEach(el => {
+      el.textContent = el.getAttribute(`data-${lang}`);
     });
-  });
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Alastor Menu</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body>
-
-<!-- زر القائمة -->
-<button id="menuToggle" class="menu-toggle" onclick="toggleNav()">
-  <span class="menu-icon"></span>
-</button>
-
-<!-- القائمة الجانبية -->
-<div id="sidebar" class="sidebar">
-  <a href="#"><i class="fas fa-home"></i><span>Home</span></a>
-  <a href="#"><i class="fas fa-code"></i><span>Developers</span></a>
-  <a href="#"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
-  <a href="#"><i class="fas fa-comments"></i><span>Contact</span></a>
-  <a href="#"><i class="fas fa-broadcast-tower"></i><span>Channels</span></a>
-  <a href="#"><i class="fas fa-box-open"></i><span>Products</span></a>
-</div>
-
-<!-- زخارف -->
-<div class="decorations"></div>
-
-<!-- سكربت -->
-<script>
-  const sidebar = document.getElementById("sidebar");
-  const menuToggle = document.getElementById("menuToggle");
-  const menuIcon = document.querySelector(".menu-icon");
-
-  function toggleNav() {
-    const isOpen = sidebar.style.width === "200px";
-    sidebar.style.width = isOpen ? "0" : "200px";
-    menuIcon.classList.toggle("open", !isOpen);
+    const langBtn = document.querySelector(".lang-toggle");
+    langBtn.textContent = lang === "en" ? "🌐 عربي" : "🌐 English";
+    document.body.dir = lang === "ar" ? "rtl" : "ltr";
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const sidebarLinks = document.querySelectorAll('#sidebar a');
-    sidebarLinks.forEach(link => {
-      link.addEventListener('click', function () {
-        sidebar.style.width = "0";
-        menuIcon.classList.remove("open");
-      });
-    });
+  // عند التحميل
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedLang = localStorage.getItem("lang") || "en";
+    applyLanguage(savedLang);
   });
-</script>
-
+    }
+  </script>
 </body>
 </html>
