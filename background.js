@@ -4,40 +4,43 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let drops = [];
-let dropRate = 1;
+let pool = []; // تجمع دم في الأسفل
 
 function createDrop() {
-  for (let i = 0; i < dropRate; i++) {
-    const drop = {
-      x: Math.random() * canvas.width,
-      y: 0,
-      width: 3 + Math.random() * 2,
-      height: 20 + Math.random() * 30,
-      speed: 4 + Math.random() * 4,
-      opacity: 0.7 + Math.random() * 0.3,
-      splashed: false
-    };
-    drops.push(drop);
-  }
+  const drop = {
+    x: Math.random() * canvas.width,
+    y: 0,
+    width: 2 + Math.random(),
+    height: 18 + Math.random() * 8,
+    speed: 4,
+    opacity: 0.9,
+    pooled: false
+  };
+  drops.push(drop);
 }
 
 function drawDrop(drop) {
   ctx.beginPath();
   const grad = ctx.createLinearGradient(drop.x, drop.y, drop.x, drop.y + drop.height);
-  grad.addColorStop(0, `rgba(120,0,0,${drop.opacity})`);
+  grad.addColorStop(0, `rgba(100,0,0,${drop.opacity})`);
   grad.addColorStop(1, `rgba(255,0,0,${drop.opacity})`);
   ctx.fillStyle = grad;
   ctx.roundRect(drop.x, drop.y, drop.width, drop.height, drop.width / 2);
   ctx.fill();
 }
 
-function drawSplash(x, y) {
-  for (let i = 0; i < 5; i++) {
-    const radius = Math.random() * 4 + 2;
+function drawPool() {
+  for (let i = 0; i < pool.length; i++) {
+    const blood = pool[i];
     ctx.beginPath();
-    ctx.fillStyle = `rgba(150,0,0,0.8)`;
-    ctx.arc(x + Math.random() * 20 - 10, y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(100, 0, 0, ${blood.opacity})`;
+    ctx.ellipse(blood.x, blood.y, blood.size, 3, 0, 0, Math.PI * 2);
     ctx.fill();
+    if (blood.grow < 20) {
+      blood.size += 0.1; // يزحف بشكل خفيف
+      blood.y -= 0.05;
+      blood.grow += 0.1;
+    }
   }
 }
 
@@ -46,19 +49,23 @@ function updateDrops() {
   for (let i = 0; i < drops.length; i++) {
     const drop = drops[i];
     drop.y += drop.speed;
+    drawDrop(drop);
 
-    if (drop.y + drop.height >= canvas.height && !drop.splashed) {
-      drawSplash(drop.x, canvas.height);
-      drop.splashed = true;
-    }
-
-    if (drop.y < canvas.height) {
-      drawDrop(drop);
-    } else if (drop.y > canvas.height + 50) {
+    if (drop.y > canvas.height - drop.height - 5 && !drop.pooled) {
+      pool.push({
+        x: drop.x,
+        y: canvas.height - 2,
+        size: 2 + Math.random() * 3,
+        opacity: 0.9,
+        grow: 0
+      });
+      drop.pooled = true;
       drops.splice(i, 1);
       i--;
     }
   }
+
+  drawPool();
 }
 
 function animate() {
@@ -66,10 +73,6 @@ function animate() {
   updateDrops();
   requestAnimationFrame(animate);
 }
-
-setInterval(() => {
-  dropRate += 0.2; // زيادة معدل النزيف تدريجياً
-}, 3000);
 
 animate();
 
