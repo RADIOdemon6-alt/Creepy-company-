@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title data-en="Projects | Creepy Alastor" data-ar="المشاريع | كريبي ألاستور">Projects | Creepy Alastor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <button class="menu-button" onclick="toggleMenu()">☰ <span data-en="Menu" data-ar="القائمة">Menu</span></button>
+      <button class="lang-toggle" onclick="toggleLanguage()">🌐</button>
+      <nav id="menuList" class="menu-list hidden">
+        <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="info.html" data-en="Info" data-ar="معلومات">Info</a>
+        <a href="projects.html" data-en="Projects" data-ar="مشاريع">Projects</a>
+        <a href="channels.html" data-en="Channels" data-ar="القنوات">Channels</a>
+        <a href="contact.html" data-en="Contact" data-ar="للتواصل">Contact</a>
+        <a href="products.html" data-en="Products" data-ar="المنتجات">Products</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <h1 class="main-title" data-en="Our Projects" data-ar="مشاريعنا">Our Projects</h1>
+
+    <!-- زر عرض البوتات -->
+    <button class="toggle-button" onclick="toggleBots()" data-en="📦 WhatsApp Bots" data-ar="📦 بوتات واتساب">
+      📦 WhatsApp Bots
+    </button>
+
+    <!-- قسم البوتات -->
+    <div id="botSection" class="projects-section hidden">
+      <div class="info-box">
+        <h3 data-en="Abyss Bot" data-ar="بوت أبيس">Abyss Bot</h3>
+        <p data-en="A WhatsApp bot built with JavaScript & Node.js" data-ar="بوت واتساب مصنوع باستخدام JavaScript و Node.js">
+          A WhatsApp bot built with JavaScript & Node.js
+        </p>
+        <p><strong data-en="Status:" data-ar="الحالة:">Status:</strong> <span data-en="Finished" data-ar="انتهى">Finished</span></p>
+      </div>
+      <div class="info-box">
+        <h3 data-en="Miku Bot" data-ar="بوت ميكو">Miku Bot</h3>
+        <p data-en="A WhatsApp bot built with JavaScript & Node.js" data-ar="بوت واتساب مصنوع باستخدام JavaScript و Node.js">
+          A WhatsApp bot built with JavaScript & Node.js
+        </p>
+        <p><strong data-en="Status:" data-ar="الحالة:">Status:</strong> <span data-en="Finished" data-ar="انتهى">Finished</span></p>
+      </div>
+      <div class="info-box">
+        <h3 data-en="Furina Bot" data-ar="بوت فورينا">Furina Bot</h3>
+        <p data-en="A WhatsApp bot built with JavaScript & Node.js" data-ar="بوت واتساب مصنوع باستخدام JavaScript و Node.js">
+          A WhatsApp bot built with JavaScript & Node.js
+        </p>
+        <p><strong data-en="Status:" data-ar="الحالة:">Status:</strong> <span data-en="Ongoing" data-ar="مستمر">Ongoing</span></p>
+      </div>
+    </div>
+
+    <!-- باقي المشاريع -->
+    <div class="projects-section">
+      <div class="info-box">
+        <h3 data-en="Bothub Platform" data-ar="منصة بوت هب">Bothub hosting</h3>
+        <p><strong data-en="Status:" data-ar="الحالة:">Status:</strong> <span data-en="Soon" data-ar="قريبًا">Soon</span></p>
+      </div>
+      <div class="info-box">
+        <h3 data-en="Creepy API" data-ar="api Creepy API">Creepy API</h3>
+        <p><strong data-en="Status:" data-ar="الحالة:">Status:</strong> <span data-en="Soon" data-ar="قريبًا">Soon</span></p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menuList");
+      menu.classList.toggle("show");
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("fade-in");
+    }
+
+    function toggleBots() {
+      const botSection = document.getElementById("botSection");
+      botSection.classList.toggle("show");
+      botSection.classList.toggle("hidden");
+      botSection.classList.toggle("fade-in");
+    }
+
+    function toggleLanguage() {
+      const currentLang = localStorage.getItem("lang") || "en";
+      const newLang = currentLang === "en" ? "ar" : "en";
+      localStorage.setItem("lang", newLang);
+      applyLanguage(newLang);
+    }
+
+    function applyLanguage(lang) {
+      const elements = document.querySelectorAll("[data-en]");
+      elements.forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+      document.body.dir = lang === "ar" ? "rtl" : "ltr";
+      document.body.style.textAlign = lang === "ar" ? "right" : "left";
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("lang") || "en";
+      applyLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>
