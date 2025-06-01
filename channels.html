@@ -1,147 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <title data-en="Channels | Creepy Alastor" data-ar="القنوات | كريبي ألاستور">Channels | Creepy Alastor</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Channels - Creepy Team</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="container">
-      <button class="menu-button" onclick="toggleMenu()">☰ <span data-en="Menu" data-ar="القائمة">Menu</span></button>
-      <button class="lang-toggle" onclick="toggleLanguage()">🌐</button>
-      <nav id="menuList" class="menu-list hidden">
-        <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
-        <a href="info.html" data-en="Info" data-ar="معلومات">Info</a>
-        <a href="projects.html" data-en="Projects" data-ar="مشاريع">Projects</a>
-        <a href="channels.html" data-en="Channels" data-ar="القنوات">Channels</a>
-        <a href="contact.html" data-en="Contact" data-ar="للتواصل">Contact</a>
-        <a href="products.html" data-en="Products" data-ar="المنتجات">Products</a>
-      </nav>
+  <!-- الشريط العلوي -->
+  <nav class="navbar">
+    <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+    <div class="menu-list">
+      <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+      <a href="info.html" data-en="Info" data-ar="معلومات">Info</a>
+      <a href="projects.html" data-en="Projects" data-ar="المشاريع">Projects</a>
+      <a href="channels.html" data-en="Channels" data-ar="القنوات">Channels</a>
+      <a href="contact.html" data-en="Contact" data-ar="للتواصل">Contact</a>
+      <a href="products.html" data-en="Products" data-ar="المنتجات">Products</a>
     </div>
-  </header>
+  </nav>
 
+  <!-- زر اللغة -->
+  <button class="lang-toggle" onclick="toggleLanguage()">🌐</button>
+
+  <!-- المحتوى الرئيسي -->
   <main class="main-content">
-    <h1 class="main-title" data-en="Official Channels" data-ar="القنوات الرسمية">Official Channels</h1>
+    <h1 class="main-title" data-en="Channels" data-ar="القنوات">Channels</h1>
 
-    <div class="projects-section">
-      <!-- مربع جروب الدعم -->
-      <a href="https://chat.whatsapp.com/EsVYfUKsZk29YX0e3RowUw" class="info-box link-box" target="_blank">
+    <section class="channels-section">
+      <a href="https://t.me/support_group" class="info-box link-box" target="_blank">
         <h3 data-en="Support Group" data-ar="جروب الدعم">Support Group</h3>
-        <p data-en="Join our support WhatsApp group" data-ar="انضم إلى جروب الدعم على واتساب">Join our support WhatsApp group</p>
+        <p data-en="Join our support group on Telegram" data-ar="انضم لجروب الدعم على تيليجرام">
+          Join our support group on Telegram
+        </p>
       </a>
 
-      <!-- مربع القناة الرسمية -->
-      <a href="https://whatsapp.com/channel/0029VbAsHQU0wajmNk6AO030" class="info-box link-box" target="_blank">
-        <h3 data-en="Official Channel" data-ar="قناتي الرسمية">Official Channel</h3>
-        <p data-en="Follow my official WhatsApp channel" data-ar="تابع قناتي الرسمية على واتساب">Follow my official WhatsApp channel</p>
+      <a href="https://t.me/official_channel" class="info-box link-box" target="_blank">
+        <h3 data-en="Official Channel" data-ar="قناتنا الرسمية">Official Channel</h3>
+        <p data-en="Follow our official news & updates" data-ar="تابع أخبارنا وآخر التحديثات">
+          Follow our official news & updates
+        </p>
       </a>
-    </div>
+    </section>
   </main>
 
+  <!-- السكربت الخاص بتبديل اللغة -->
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById("menuList");
-      menu.classList.toggle("show");
-      menu.classList.toggle("hidden");
-      menu.classList.toggle("fade-in");
-    }
-
     function toggleLanguage() {
-      const currentLang = localStorage.getItem("lang") || "en";
-      const newLang = currentLang === "en" ? "ar" : "en";
-      localStorage.setItem("lang", newLang);
-      applyLanguage(newLang);
-    }
+      const body = document.body;
+      const isRTL = body.getAttribute("dir") === "rtl";
+      body.setAttribute("dir", isRTL ? "ltr" : "rtl");
 
-    function applyLanguage(lang) {
-      const elements = document.querySelectorAll("[data-en]");
-      elements.forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
+      document.querySelectorAll("[data-en]").forEach(el => {
+        el.textContent = isRTL ? el.dataset.en : el.dataset.ar;
       });
-      document.body.dir = lang === "ar" ? "rtl" : "ltr";
-      document.body.style.textAlign = lang === "ar" ? "right" : "left";
     }
 
-    window.addEventListener("DOMContentLoaded", () => {
-      const savedLang = localStorage.getItem("lang") || "en";
-      applyLanguage(savedLang);
-    });
-  </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title data-en="Channels | Creepy Alastor" data-ar="القنوات | كريبي ألاستور">Channels | Creepy Alastor</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="navbar">
-    <div class="container">
-      <button class="menu-button" onclick="toggleMenu()">☰ <span data-en="Menu" data-ar="القائمة">Menu</span></button>
-      <button class="lang-toggle" onclick="toggleLanguage()">🌐</button>
-      <nav id="menuList" class="menu-list hidden">
-        <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
-        <a href="info.html" data-en="Info" data-ar="معلومات">Info</a>
-        <a href="projects.html" data-en="Projects" data-ar="مشاريع">Projects</a>
-        <a href="channels.html" data-en="Channels" data-ar="القنوات">Channels</a>
-        <a href="contact.html" data-en="Contact" data-ar="للتواصل">Contact</a>
-        <a href="products.html" data-en="Products" data-ar="المنتجات">Products</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="main-content">
-    <h1 class="main-title" data-en="Official Channels" data-ar="القنوات الرسمية">Official Channels</h1>
-
-    <div class="projects-section">
-      <!-- مربع جروب الدعم -->
-      <a href="https://chat.whatsapp.com/EsVYfUKsZk29YX0e3RowUw" class="info-box link-box" target="_blank">
-        <h3 data-en="Support Group" data-ar="جروب الدعم">Support Group</h3>
-        <p data-en="Join our support WhatsApp group" data-ar="انضم إلى جروب الدعم على واتساب">Join our support WhatsApp group</p>
-      </a>
-
-      <!-- مربع القناة الرسمية -->
-      <a href="https://whatsapp.com/channel/0029VbAsHQU0wajmNk6AO030" class="info-box link-box" target="_blank">
-        <h3 data-en="Official Channel" data-ar="قناتي الرسمية">Official Channel</h3>
-        <p data-en="Follow my official WhatsApp channel" data-ar="تابع قناتي الرسمية على واتساب">Follow my official WhatsApp channel</p>
-      </a>
-    </div>
-  </main>
-
-  <script>
     function toggleMenu() {
-      const menu = document.getElementById("menuList");
-      menu.classList.toggle("show");
-      menu.classList.toggle("hidden");
-      menu.classList.toggle("fade-in");
+      document.querySelector('.menu-list').classList.toggle('show');
     }
-
-    function toggleLanguage() {
-      const currentLang = localStorage.getItem("lang") || "en";
-      const newLang = currentLang === "en" ? "ar" : "en";
-      localStorage.setItem("lang", newLang);
-      applyLanguage(newLang);
-    }
-
-    function applyLanguage(lang) {
-      const elements = document.querySelectorAll("[data-en]");
-      elements.forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
-      });
-      document.body.dir = lang === "ar" ? "rtl" : "ltr";
-      document.body.style.textAlign = lang === "ar" ? "right" : "left";
-    }
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const savedLang = localStorage.getItem("lang") || "en";
-      applyLanguage(savedLang);
-    });
   </script>
 </body>
 </html>
