@@ -6,6 +6,7 @@ body {
   background-color: #000;
   color: #ff1a1a;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 /* الخلفية */
@@ -30,23 +31,6 @@ body {
   box-shadow: 0 0 15px #ff000066;
 }
 
-/* زر اللغة */
-.lang-toggle {
-  background: transparent;
-  color: white;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  transition: transform 0.4s ease, text-shadow 0.4s ease;
-  border-radius: 50%;
-  padding: 6px;
-  box-shadow: 0 0 10px crimson;
-}
-.lang-toggle:hover {
-  transform: rotate(360deg) scale(1.1);
-  text-shadow: 0 0 8px red;
-}
-
 /* زر القائمة */
 .menu-button {
   font-size: 22px;
@@ -57,6 +41,29 @@ body {
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 0 8px red;
+}
+
+/* زر اللغة دائري أسفل يمين */
+.lang-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: crimson;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 0 12px red;
+  transition: all 0.4s ease;
+  z-index: 100;
+}
+
+.lang-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 0 18px red;
 }
 
 /* القائمة */
@@ -74,7 +81,6 @@ body {
   display: block;
   width: 140px;
   padding: 16px;
-  margin: 0 auto;
   background: linear-gradient(145deg, #2c0000, #1a0000);
   color: #ff1a1a;
   text-align: center;
@@ -85,14 +91,14 @@ body {
     inset 2px 2px 5px #1a0000,
     inset -2px -2px 5px #5a0000,
     0 0 8px red;
-  transition: all 0.3s ease;
   text-shadow: 1px 1px 0 #000, -1px -1px 0 #2a0000;
   opacity: 0;
   transform: translateY(-20px);
   pointer-events: none;
+  max-width: 90vw;
 }
 
-/* تأثير الظهور التدريجي */
+/* تأثير ظهور القوائم */
 .menu-list.show a {
   animation: dropIn 0.3s forwards;
 }
@@ -119,7 +125,7 @@ body {
 
 /* المحتوى الرئيسي */
 .main-content {
-  padding: 140px 20px 20px;
+  padding: 140px 20px 40px;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -127,19 +133,24 @@ body {
   box-sizing: border-box;
 }
 
+.main-title,
+.main-subtitle {
+  margin: 0 auto;
+  max-width: 90vw;
+  direction: inherit;
+  text-align: center;
+}
+
 .main-title {
   font-size: 42px;
   color: #ff1a1a;
   text-shadow: 0 0 10px #ff0000;
-  margin: 0 auto;
-  max-width: 90vw;
 }
 
 .main-subtitle {
   font-size: 20px;
   color: #ff9999;
-  margin: 10px auto;
-  max-width: 90vw;
+  margin-top: 10px;
 }
 
 /* تجاوب */
