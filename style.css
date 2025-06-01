@@ -21,20 +21,25 @@ body {
 
 /* الشريط العلوي */
 .navbar {
-  background-color: #4d0000; /* أحمر غامق */
+  background-color: #4d0000;
   padding: 10px 20px;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 10;
   box-shadow: 0 0 10px red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+/* الحاوية */
 .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 /* زر القائمة */
@@ -49,10 +54,11 @@ body {
   box-shadow: 0 0 8px red;
 }
 
-/* القائمة */
+/* القائمة بشكل مربعات */
 .menu-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 10px;
   background: rgba(0, 0, 0, 0.95);
   position: absolute;
   top: 60px;
@@ -64,13 +70,35 @@ body {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
+/* عناصر القائمة */
 .menu-list a {
+  background: #1a0000;
+  border: 1px solid crimson;
+  padding: 12px;
+  text-align: center;
   color: #ff4d4d;
   text-decoration: none;
-  padding: 8px 12px;
-  transition: all 0.3s ease;
   font-size: 18px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px crimson;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
+
+/* عند الفتح تظهر تدريجياً */
+.menu-list.fade-in a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* توقيت متسلسل */
+.menu-list.fade-in a:nth-child(1) { transition-delay: 0.2s; }
+.menu-list.fade-in a:nth-child(2) { transition-delay: 1.2s; }
+.menu-list.fade-in a:nth-child(3) { transition-delay: 2.2s; }
+.menu-list.fade-in a:nth-child(4) { transition-delay: 3.2s; }
+.menu-list.fade-in a:nth-child(5) { transition-delay: 4.2s; }
+.menu-list.fade-in a:nth-child(6) { transition-delay: 5.2s; }
 
 .menu-list a:hover {
   background-color: #ff1a1a30;
@@ -78,22 +106,16 @@ body {
   text-shadow: 0 0 8px red;
 }
 
-/* تأثيرات ظهور */
+/* إخفاء عند الإغلاق */
 .hidden {
   opacity: 0;
   transform: translateY(-20px);
   pointer-events: none;
 }
 
-.fade-in {
-  opacity: 1 !important;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
 /* المحتوى الرئيسي */
 .main-content {
-  padding-top: 120px;
+  padding-top: 160px;
   text-align: center;
   z-index: 2;
   position: relative;
@@ -110,10 +132,34 @@ body {
   color: #ff9999;
 }
 
+/* زر اللغة - دائرة كوكب */
+.lang-toggle {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #ff1a1a;
+  margin-left: 10px;
+  animation: pulse 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+.lang-toggle:hover {
+  transform: scale(1.2) rotate(10deg);
+  color: #fff;
+}
+
+/* حركة نبض */
+@keyframes pulse {
+  0% { text-shadow: 0 0 5px red; }
+  50% { text-shadow: 0 0 20px crimson; }
+  100% { text-shadow: 0 0 5px red; }
+}
+
 /* تجاوب */
 @media (min-width: 600px) {
   .menu-list {
-    flex-direction: row;
+    grid-template-columns: repeat(6, auto);
     position: static;
     background: none;
     box-shadow: none;
@@ -122,8 +168,10 @@ body {
   }
 
   .menu-list a {
-    margin: 0 10px;
-    font-size: 20px;
+    margin: 0 5px;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 
   .hidden {
@@ -136,20 +184,3 @@ body {
     display: none;
   }
 }
-.lang-toggle {
-  background: transparent;
-  color: white;
-  border: 2px solid crimson;
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-left: 10px;
-  box-shadow: 0 0 8px red;
-  transition: all 0.3s ease;
-}
-
-.lang-toggle:hover {
-  background-color: crimson;
-  color: black;
-} 
