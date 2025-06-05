@@ -77,3 +77,41 @@ body[dir="rtl"] .menu-list { flex-direction: row; top: 70px; right: 30px; }
 .channel-card a { text-decoration: none; display: block; }
 
 .channels-section { padding: 20px; display: flex; flex-direction: column; align-items: center; }
+.square-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+}
+
+.square {
+  width: 160px;
+  height: 160px;
+  background: rgba(255, 0, 0, 0.08);
+  border: 2px solid crimson;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Creepster', cursive;
+  font-size: 22px;
+  text-shadow: 0 0 6px crimson;
+  box-shadow: 0 0 15px crimson;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.square:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px red, 0 0 10px crimson;
+}
+
+.square i {
+  font-size: 42px;
+  margin-bottom: 12px;
+  color: #25D366;
+  text-shadow: 0 0 6px #25D366, 0 0 3px #128C7E;
+} 
