@@ -13,16 +13,82 @@ body {
   box-sizing: border-box;
 }
 
-/* الشريط العلوي */
-.navbar {
-  background-color: #4d0000;
-  padding: 10px 20px;
+/* ========== البداية: الكرة الشبكية ========== */
+.start-screen {
   position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 10;
-  box-shadow: 0 0 15px #ff000066;
+  inset: 0;
+  background: radial-gradient(ellipse at center, #000000dd, #1a0000ee);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transition: opacity 1s ease;
 }
+
+.start-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glow-sphere {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #ff1a1a 20%, #000000 80%);
+  box-shadow: 0 0 30px red, inset 0 0 20px #000;
+  animation: pulse 2s infinite ease-in-out, rotateMesh 8s linear infinite;
+  cursor: pointer;
+  position: relative;
+}
+
+.glow-sphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(255, 0, 0, 0.3) 9px, transparent 10px);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  animation: meshSlide 3s linear infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 30px red; }
+  50% { transform: scale(1.08); box-shadow: 0 0 50px crimson; }
+}
+
+@keyframes rotateMesh {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes meshSlide {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+/* ========== التحكم في التنقل الجانبي بين الأقسام ========== */
+body {
+  scroll-snap-type: x mandatory;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  height: 100vh;
+}
+
+section {
+  min-width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  overflow-y: auto;
+  padding: 140px 20px 40px;
+  box-sizing: border-box;
+}
+
+/* السماح فقط للواجهة الرئيسية أن تكون مرئية بعد الضغط */
+body:not(.show-main) section:not(:first-child) {
+  display: none;
 
 /* زر القائمة ككلمة فقط */
 .menu-button {
