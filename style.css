@@ -1,374 +1,80 @@
-/* إعدادات عامة */
-body {
-margin: 0;
-padding: 0;
-font-family: 'Creepster', cursive;
-background-image: url('https://files.catbox.moe/l1qmio.jpg');
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-background-attachment: fixed;
-color: #ff1a1a;
-overflow-x: hidden;
-box-sizing: border-box;
-}
+/* إعدادات عامة */ body { margin: 0; padding: 0; font-family: 'Creepster', cursive; background-image: url('https://files.catbox.moe/l1qmio.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; color: #cc0000; overflow-x: hidden; box-sizing: border-box; }
 
-/* الشريط العلوي */
-.navbar {
-background-color: #4d0000;
-padding: 10px 20px;
-position: fixed;
-width: 100%;
-top: 0;
-z-index: 10;
-box-shadow: 0 0 15px #ff000066;
-}
+/* الشريط العلوي */ .navbar { background-color: #1a0000; padding: 10px 20px; position: fixed; width: 100%; top: 0; z-index: 10; box-shadow: 0 0 15px #99000066; }
 
-/* زر القائمة ككلمة فقط */
-.menu-button {
-font-size: 22px;
-background: none;
-color: #fff;
-border: none;
-padding: 0;
-border-radius: 0;
-cursor: pointer;
-box-shadow: none;
-}
+/* زر القائمة ككلمة فقط */ .menu-button { font-size: 22px; background: none; color: #cc0000; border: none; padding: 0; border-radius: 0; cursor: pointer; box-shadow: none; }
 
-/* زر اللغة */
-.lang-toggle {
-position: fixed;
-bottom: 20px;
-right: 20px;
-background: crimson;
-color: white;
-border: none;
-width: 50px;
-height: 50px;
-border-radius: 50%;
-font-size: 22px;
-cursor: pointer;
-box-shadow: 0 0 12px red;
-transition: all 0.4s ease;
-z-index: 100;
-}
+/* زر اللغة */ .lang-toggle { position: fixed; bottom: 20px; right: 20px; background: #7a0000; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 22px; cursor: pointer; box-shadow: 0 0 12px #990000; transition: all 0.4s ease; z-index: 100; }
 
-.lang-toggle:hover {
-transform: scale(1.1) rotate(15deg);
-box-shadow: 0 0 18px red;
-}
+.lang-toggle:hover { transform: scale(1.1) rotate(15deg); box-shadow: 0 0 18px #ff0000; }
 
-body[dir="rtl"] .lang-toggle {
-right: auto;
-left: 20px;
-}
+body[dir="rtl"] .lang-toggle { right: auto; left: 20px; }
 
-/* القائمة بدون خلفية ولا حواف */
-.menu-list {
-display: flex;
-flex-direction: column;
-gap: 10px;
-background: none;
-border: none;
-box-shadow: none;
-padding: 0;
-position: absolute;
-top: 60px;
-left: 20px;
-z-index: 5;
-transition: all 0.5s ease;
-}
+/* القائمة */ .menu-list { display: flex; flex-direction: column; gap: 10px; background: none; border: none; box-shadow: none; padding: 0; position: absolute; top: 60px; left: 20px; z-index: 5; transition: all 0.5s ease; }
 
-body[dir="rtl"] .menu-list {
-left: auto;
-right: 20px;
-align-items: flex-end;
-}
+body[dir="rtl"] .menu-list { left: auto; right: 20px; align-items: flex-end; }
 
-body[dir="rtl"] .menu-list a {
-text-align: right;
-}
+body[dir="rtl"] .menu-list a { text-align: right; }
 
-/* أزرار القائمة */
-.menu-list a {
-display: block;
-padding: 5px 8px;
-background: linear-gradient(145deg, #2c0000, #1a0000);
-color: #ff1a1a;
-text-align: center;
-text-decoration: none;
-border-radius: 8px;
-font-size: 18px;
-box-shadow:
-inset 1px 1px 2px #1a0000,
-inset -1px -1px 2px #5a0000,
-0 0 5px red;
-text-shadow: 1px 1px 0 #000, -1px -1px 0 #2a0000;
-opacity: 0;
-transform: translateY(-20px);
-pointer-events: none;
-max-width: 90vw;
-}
+.menu-list a { display: block; padding: 5px 8px; background: linear-gradient(145deg, #0a0000, #1a0000); color: #cc0000; text-align: center; text-decoration: none; border-radius: 8px; font-size: 18px; box-shadow: inset 1px 1px 2px #000, inset -1px -1px 2px #2a0000, 0 0 5px #770000; text-shadow: 1px 1px 0 #000, -1px -1px 0 #2a0000; opacity: 0; transform: translateY(-20px); pointer-events: none; max-width: 90vw; }
 
-/* تأثير ظهور العناصر */
-.menu-list.show a {
-animation: dropIn 0.3s forwards;
-}
-.menu-list.show a:nth-child(2) { animation-delay: 0.25s; }
-.menu-list.show a:nth-child(3) { animation-delay: 0.5s; }
-.menu-list.show a:nth-child(4) { animation-delay: 0.75s; }
-.menu-list.show a:nth-child(5) { animation-delay: 1s; }
-.menu-list.show a:nth-child(6) { animation-delay: 1.25s; }
+.menu-list.show a { animation: dropIn 0.3s forwards; }
 
-@keyframes dropIn {
-to {
-opacity: 1;
-transform: translateY(0);
-pointer-events: auto;
-}
-}
+.menu-list.show a:nth-child(2) { animation-delay: 0.25s; } .menu-list.show a:nth-child(3) { animation-delay: 0.5s; } .menu-list.show a:nth-child(4) { animation-delay: 0.75s; } .menu-list.show a:nth-child(5) { animation-delay: 1s; } .menu-list.show a:nth-child(6) { animation-delay: 1.25s; }
 
-.menu-list a:hover {
-background: radial-gradient(circle at top, #ff1a1a, #4d0000);
-color: #fff;
-box-shadow: 0 0 12px crimson, inset 0 0 10px #000;
-text-shadow: 0 0 10px red;
-}
+@keyframes dropIn { to { opacity: 1; transform: translateY(0); pointer-events: auto; } }
 
-/* المحتوى الرئيسي */
-.main-content {
-padding: 140px 20px 40px;
-text-align: center;
-position: relative;
-z-index: 2;
-max-width: 100%;
-box-sizing: border-box;
-overflow-wrap: break-word;
-}
+.menu-list a:hover { background: radial-gradient(circle at top, #cc0000, #1a0000); color: #fff; box-shadow: 0 0 12px #cc0000, inset 0 0 10px #000; text-shadow: 0 0 10px #990000; }
 
-.main-title,
-.main-subtitle {
-margin: 0 auto;
-max-width: 90vw;
-word-wrap: break-word;
-line-height: 1.4;
-direction: inherit;
-text-align: center;
-}
+.main-content { padding: 140px 20px 40px; text-align: center; position: relative; z-index: 2; max-width: 100%; box-sizing: border-box; overflow-wrap: break-word; }
 
-.main-title {
-font-size: 42px;
-color: #ff1a1a;
-text-shadow: 0 0 10px #ff0000;
-}
+.main-title, .main-subtitle { margin: 0 auto; max-width: 90vw; word-wrap: break-word; line-height: 1.4; direction: inherit; text-align: center; }
 
-.main-subtitle {
-font-size: 20px;
-color: #ff9999;
-margin-top: 10px;
-}
+.main-title { font-size: 42px; color: #cc0000; text-shadow: 0 0 10px #990000; }
 
-/* استجابة */
-@media (min-width: 600px) {
-body:not([dir="rtl"]) .menu-list {
-flex-direction: row;
-top: 70px;
-left: 30px;
-}
+.main-subtitle { font-size: 20px; color: #aa4444; margin-top: 10px; }
 
-body[dir="rtl"] .menu-list {
-flex-direction: row;
-top: 70px;
-right: 30px;
-}
+@media (min-width: 600px) { body:not([dir="rtl"]) .menu-list { flex-direction: row; top: 70px; left: 30px; }
 
-.menu-button {
-display: none;
-}
+body[dir="rtl"] .menu-list { flex-direction: row; top: 70px; right: 30px; }
 
-.menu-list a {
-opacity: 1 !important;
-transform: translateY(0) !important;
-pointer-events: auto !important;
-animation: none !important;
-width: auto;
-margin: 0 8px;
-}
-}
-/* قسم المعلومات */
-.profile-container {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 15px;
-margin-top: 60px;
-}
+.menu-button { display: none; }
 
-.profile-image {
-width: 140px;
-height: 140px;
-border-radius: 20px;
-background: url('https://files.catbox.moe/0nlvog.jpg') center/cover no-repeat;
-box-shadow:
-inset 2px 2px 6px #000,
-inset -2px -2px 6px #440000,
-0 0 10px red;
-border: 3px solid #ff1a1a;
-}
+.menu-list a { opacity: 1 !important; transform: translateY(0) !important; pointer-events: auto !important; animation: none !important; width: auto; margin: 0 8px; } }
 
-.profile-name {
-font-size: 32px;
-color: #ff1a1a;
-text-shadow: 0 0 8px #ff0000;
-margin: 0;
-}
-.info-boxes {
-display: flex;
-flex-direction: column;
-gap: 15px;
-margin-top: 20px;
-align-items: center;
-}
+.profile-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 60px; }
 
-.info-box {
-padding: 10px 20px;
-background: linear-gradient(145deg, #1a0000, #2c0000);
-border-radius: 14px;
-box-shadow:
-inset 2px 2px 5px #000,
-inset -2px -2px 5px #550000,
-0 0 6px red;
-font-size: 18px;
-text-shadow:
-1px 1px 0 #000,
--1px -1px 0 #330000;
-color: #ff1a1a;
-text-align: center;
-min-width: 220px;
+.profile-image { width: 140px; height: 140px; border-radius: 20px; background: url('https://files.catbox.moe/0nlvog.jpg') center/cover no-repeat; box-shadow: inset 2px 2px 6px #000, inset -2px -2px 6px #220000, 0 0 10px #660000; border: 3px solid #cc0000; }
 
-opacity: 0;
-transform: translateY(30px);
-animation: fadeUp 0.6s forwards;
-}
+.profile-name { font-size: 32px; color: #cc0000; text-shadow: 0 0 8px #990000; margin: 0; }
 
-.info-boxes .info-box:nth-child(1) {
-animation-delay: 0s;
-}
-.info-boxes .info-box:nth-child(2) {
-animation-delay: 0.25s;
-}
-.info-boxes .info-box:nth-child(3) {
-animation-delay: 0.5s;
-}
+.info-boxes { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; align-items: center; }
 
-@keyframes fadeUp {
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-.toggle-button {
-background-color: #6a0000;
-color: #fff;
-border: none;
-padding: 10px 20px;
-margin-bottom: 15px;
-cursor: pointer;
-font-size: 1.1em;
-border-radius: 10px;
-}
+.info-box { padding: 10px 20px; background: linear-gradient(145deg, #0a0000, #1a0000); border-radius: 14px; box-shadow: inset 2px 2px 5px #000, inset -2px -2px 5px #330000, 0 0 6px #770000; font-size: 18px; text-shadow: 1px 1px 0 #000, -1px -1px 0 #1a0000; color: #cc0000; text-align: center; min-width: 220px; opacity: 0; transform: translateY(30px); animation: fadeUp 0.6s forwards; }
 
-.hidden {
-display: none;
-opacity: 0;
-transition: opacity 0.4s ease-in-out;
-}
+.info-boxes .info-box:nth-child(1) { animation-delay: 0s; } .info-boxes .info-box:nth-child(2) { animation-delay: 0.25s; } .info-boxes .info-box:nth-child(3) { animation-delay: 0.5s; }
 
-.show {
-display: block;
-opacity: 1;
-}
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-.fade-in {
-animation: fadeIn 0.5s ease-in-out;
-}
+.toggle-button { background-color: #330000; color: #fff; border: none; padding: 10px 20px; margin-bottom: 15px; cursor: pointer; font-size: 1.1em; border-radius: 10px; }
 
-@keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
-}
-.channel-card {
-width: 90%;
-max-width: 400px;
-margin: 20px auto;
-padding: 20px;
-background: rgba(10, 0, 0, 0.3);
-border: 2px solid #a30000;
-border-radius: 20px;
-box-shadow:
-inset 0 0 8px #a30000,
-inset 0 0 25px #300000,
-0 0 12px #ff000033;
-color: #fff;
-text-align: center;
-font-family: 'Creepster', cursive;
-overflow-wrap: break-word;
-word-wrap: break-word;
-word-break: break-word;
-animation: fadeUp 0.6s ease both;
-position: relative;
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-backdrop-filter: blur(6px);
-}
+.hidden { display: none; opacity: 0; transition: opacity 0.4s ease-in-out; }
 
-.channel-card:hover {
-transform: scale(1.02);
-box-shadow:
-inset 0 0 15px #ff1a1a,
-0 0 25px #ff000066;
-}
+.show { display: block; opacity: 1; }
 
-.channel-card h3 {
-font-size: 1.7em;
-margin-bottom: 10px;
-color: #ff4d4d;
-text-shadow:
-1px 1px 0 #000,
--1px -1px 0 #300000;
-white-space: normal;
-overflow: hidden;
-text-overflow: ellipsis;
-}
+.fade-in { animation: fadeIn 0.5s ease-in-out; }
 
-.channel-card p {
-font-size: 1em;
-color: #dddddd;
-margin: 0;
-line-height: 1.4;
-white-space: normal;
-overflow: hidden;
-text-overflow: ellipsis;
-text-shadow: 1px 1px 0 #000;
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-.channel-card a {
-text-decoration: none;
-display: block;
-}
-.channels-section {
-padding: 20px;
-display: flex;
-flex-direction: column;
-align-items: center;
-}
-@keyframes fadeUp {
-from {
-opacity: 0;
-transform: translateY(30px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
+.channel-card { width: 90%; max-width: 400px; margin: 20px auto; padding: 20px; background: rgba(0, 0, 0, 0.3); border: 2px solid #660000; border-radius: 20px; box-shadow: inset 0 0 8px #660000, inset 0 0 25px #1a0000, 0 0 12px #cc000033; color: #fff; text-align: center; font-family: 'Creepster', cursive; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; animation: fadeUp 0.6s ease both; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease; backdrop-filter: blur(6px); }
+
+.channel-card:hover { transform: scale(1.02); box-shadow: inset 0 0 15px #cc0000, 0 0 25px #99000066; }
+
+.channel-card h3 { font-size: 1.7em; margin-bottom: 10px; color: #cc4444; text-shadow: 1px 1px 0 #000, -1px -1px 0 #300000; white-space: normal; overflow: hidden; text-overflow: ellipsis; }
+
+.channel-card p { font-size: 1em; color: #cccccc; margin: 0; line-height: 1.4; white-space: normal; overflow: hidden; text-overflow: ellipsis; text-shadow: 1px 1px 0 #000; }
+
+.channel-card a { text-decoration: none; display: block; }
+
+.channels-section { padding: 20px; display: flex; flex-direction: column; align-items: center; }
+
