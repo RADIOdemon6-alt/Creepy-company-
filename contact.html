@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact | Creepy Alastor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- الشريط العلوي -->
+  <header class="navbar">
+    <div class="container">
+      <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+      <button class="lang-toggle" onclick="toggleLanguage()">🌐</button>
+      <nav id="menuList" class="menu-list hidden">
+        <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="info.html" data-en="Info" data-ar="معلومات">Info</a>
+        <a href="projects.html" data-en="Projects" data-ar="مشاريع">Projects</a>
+        <a href="channels.html" data-en="Channels" data-ar="القنوات">Channels</a>
+        <a href="contact.html" data-en="Contact" data-ar="للتواصل">Contact</a>
+        <a href="products.html" data-en="Products" data-ar="المنتجات">Products</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- محتوى صفحة التواصل -->
+  <main class="main-content">
+    <h1 class="main-title" data-en="Get in Touch with the Demon" data-ar="تواصل مع الشيطان">
+      Get in Touch with the Demon
+    </h1>
+    <p class="main-subtitle" data-en="Feel free to summon me anytime... 🩸" data-ar="لا تتردد في استحضاري في أي وقت... 🩸">
+      Feel free to summon me anytime... 🩸
+    </p>
+
+    <section class="info-boxes" style="margin-top: 40px;">
+      <div class="info-box" data-en="Email: alastor@hellmail.com" data-ar="البريد: alastor@hellmail.com">
+        Email: byzaryws@gmail.com
+      </div>
+      <div class="info-box" data-en="WhatsApp: +123456789" data-ar="واتساب: +123456789">
+        WhatsApp:  https://wa.me/213799465270
+      </div>
+      <div class="info-box" data-en="Twitter: @RadioDemon" data-ar="تويتر: @RadioDemon">
+        Twitter: @RadioDemon
+      </div>
+    </section>
+
+    <!-- يمكنك لاحقًا إضافة نموذج تواصل هنا إن أحببت -->
+  </main>
+
+  <!-- سكريبت -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menuList");
+      menu.classList.toggle("show");
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("fade-in");
+    }
+
+    function toggleLanguage() {
+      const currentLang = localStorage.getItem("lang") || "en";
+      const newLang = currentLang === "en" ? "ar" : "en";
+      localStorage.setItem("lang", newLang);
+      applyLanguage(newLang);
+    }
+
+    function applyLanguage(lang) {
+      const elements = document.querySelectorAll("[data-en]");
+      elements.forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+      document.body.dir = lang === "ar" ? "rtl" : "ltr";
+      document.body.style.textAlign = lang === "ar" ? "right" : "left";
+    }
+
+    window.onload = () => {
+      const currentLang = localStorage.getItem("lang") || "en";
+      applyLanguage(currentLang);
+    };
+  </script>
+</body>
+</html>
