@@ -78,3 +78,16 @@ body[dir="rtl"] .menu-list { flex-direction: row; top: 70px; right: 30px; }
 
 .channels-section { padding: 20px; display: flex; flex-direction: column; align-items: center; }
 
+/* نيون شيطاني من الأطراف */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  box-shadow:
+    inset 0 0 80px 20px #330000,
+    inset 0 0 120px 40px #660000,
+    inset 0 0 200px 60px #990000;
+  border-radius: 0;
+}
