@@ -1,42 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta charset="UTF-8" />
   <title>Contact | Creepy Alastor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Creepster&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Creepster&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- الشريط العلوي -->
-  <nav id="menuList" class="menu-list hidden">
-  <div class="menu-square" onclick="window.location.href='index.html'">
-    <i class="fas fa-home"></i>
-    <span class="engraved-text" data-en="Home" data-ar="الرئيسية">الرئيسية</span>
-  </div>
-  <div class="menu-square" onclick="window.location.href='info.html'">
-    <i class="fas fa-info-circle"></i>
-    <span class="engraved-text" data-en="Info" data-ar="معلومات">معلومات</span>
-  </div>
-  <div class="menu-square" onclick="window.location.href='projects.html'">
-    <i class="fas fa-tools"></i>
-    <span class="engraved-text" data-en="Projects" data-ar="مشاريع">مشاريع</span>
-  </div>
-  <div class="menu-square" onclick="window.location.href='channels.html'">
-    <i class="fas fa-tv"></i>
-    <span class="engraved-text" data-en="Channels" data-ar="القنوات">القنوات</span>
-  </div>
-  <div class="menu-square" onclick="window.location.href='contact.html'">
-    <i class="fas fa-phone"></i>
-    <span class="engraved-text" data-en="Contact" data-ar="للتواصل">للتواصل</span>
-  </div>
-  <div class="menu-square" onclick="window.location.href='products.html'">
-    <i class="fas fa-shopping-bag"></i>
-    <span class="engraved-text" data-en="Products" data-ar="المنتجات">المنتجات</span>
-  </div>
-</nav>
+  <header class="navbar">
+    <div class="container">
+      <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+      <button class="lang-toggle" onclick="toggleLanguage()">🌐</button>
+      <nav id="menuList" class="menu-list hidden">
+        <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="info.html" data-en="Info" data-ar="معلومات">Info</a>
+        <a href="projects.html" data-en="Projects" data-ar="مشاريع">Projects</a>
+        <a href="channels.html" data-en="Channels" data-ar="القنوات">Channels</a>
+        <a href="contact.html" data-en="Contact" data-ar="للتواصل">Contact</a>
+        <a href="products.html" data-en="Products" data-ar="المنتجات">Products</a>
+      </nav>
+    </div>
+  </header>
 
   <!-- محتوى صفحة التواصل -->
   <main class="main-content">
@@ -47,7 +35,7 @@
       Feel free to summon me anytime... 🩸
     </p>
 
-  <div class="square-menu">
+    <div class="square-menu">
   <div class="square" onclick="window.open('https://whatsapp.com/channel/EXAMPLE123', '_blank')">
     <i class="fab fa-whatsapp"></i>
     <span class="engraved-text">قناة واتساب</span>
@@ -56,7 +44,8 @@
     <i class="fas fa-comments"></i>
     <span class="engraved-text">شات واتساب</span>
   </div>
-</div>
+    </div>
+
     <!-- يمكنك لاحقًا إضافة نموذج تواصل هنا إن أحببت -->
   </main>
 
