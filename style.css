@@ -77,3 +77,62 @@ body[dir="rtl"] .menu-list { flex-direction: row; top: 70px; right: 30px; }
 .channel-card a { text-decoration: none; display: block; }
 
 .channels-section { padding: 20px; display: flex; flex-direction: column; align-items: center; }
+.square-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+}
+
+.square {
+  width: 160px;
+  height: 160px;
+  background: #330000; /* خلفية غير شفافة */
+  border: 2px solid crimson;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Creepster', cursive;
+  font-size: 22px;
+  box-shadow: 0 0 15px crimson;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  position: relative;
+}
+
+.square:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px red, 0 0 10px crimson;
+}
+
+.square:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 15px red inset;
+}
+
+.square i {
+  font-size: 42px;
+  margin-bottom: 12px;
+  color: #25D366;
+  text-shadow: 0 0 6px #25D366, 0 0 3px #128C7E;
+}
+
+/* تغيير لون الأيقونة للمربع الثاني */
+.square:nth-child(2) i {
+  color: #ffcc00;
+  text-shadow: 0 0 6px #ffcc00, 0 0 3px #b8860b;
+}
+
+.engraved-text {
+  text-shadow:
+    1px 1px 0 #000,
+   -1px -1px 0 #000,
+    1px -1px 0 #000,
+   -1px 1px 0 #000,
+    0 0 10px crimson;
+  color: #fff;
+} 
