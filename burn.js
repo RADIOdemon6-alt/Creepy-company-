@@ -1,5 +1,5 @@
 /*  ⚠️ عدّل التوقيتات حسب الريمكس الخاص بك ⚠️  */
-const FIRST_LINE_TIME  = 22;  // أول "I let the world burn" بالثانية
+const FIRST_LINE_TIME  = 22;    // أول "I let the world burn"
 const SECOND_LINE_TIME = 23.5;  // التكرار الذي نبدأ عنده الاحتراق
 const REDIRECT_AFTER   = 2;     // ثوانى بعد الانفجار قبل الانتقال
 
@@ -10,11 +10,13 @@ window.addEventListener('DOMContentLoaded', () => {
   const audio     = document.getElementById('introAudio');
   const lyric     = document.getElementById('lyricText');
   const fire      = document.getElementById('fireOverlay');
+  const startBtn  = document.getElementById('startBtn');
 
-  /* نضمن التشغيل حتى لو كان المتصفح يحتاج تفاعل */
-  const start = () => { audio.play(); document.removeEventListener('click', start); };
-  document.addEventListener('click', start);       // ضغطة واحدة تكفى
-  start();                                         // جرّب فى المتصفحات التى تسمح autoplay
+  /* عند الضغط على زر "بــدأ" */
+  startBtn.addEventListener('click', () => {
+    startBtn.remove();      // نخفي الزر
+    audio.play();           // نشغّل الصوت
+  });
 
   /* كل فريم نراقب التوقيت */
   audio.addEventListener('timeupdate', () => {
@@ -35,16 +37,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
   /* التأثير الرئيسى */
   function startBurnEffect () {
-
-    /* نلتقط صورة كاملة للموقع قبل أن نختفى */
     html2canvas(document.body).then(snap => {
 
-      /* نخفي كل شيء ما عدا الـ Overlay */
-      [...document.body.children].forEach(el=>{
-        if(el.id !== 'introOverlay'){ el.style.visibility='hidden'; }
+      // إخفاء كل شيء ما عدا الـ Overlay
+      [...document.body.children].forEach(el => {
+        if (el.id !== 'introOverlay') el.style.visibility = 'hidden';
       });
 
-      /* نضيف Canvas أعلى الصفحة */
+      // نضيف Canvas أعلى الصفحة
       const burnCanvas = document.createElement('canvas');
       burnCanvas.id = 'burnCanvas';
       burnCanvas.width  = snap.width;
@@ -52,33 +52,33 @@ window.addEventListener('DOMContentLoaded', () => {
       overlay.appendChild(burnCanvas);
       const ctx = burnCanvas.getContext('2d');
 
-      // نقطع الصورة مربعات 32×32 بكسل
+      // نقطع الصورة إلى مربعات 32×32
       const TILE = 32, pieces = [];
-      for (let y=0; y<snap.height; y+=TILE) {
-        for (let x=0; x<snap.width; x+=TILE) {
+      for (let y = 0; y < snap.height; y += TILE) {
+        for (let x = 0; x < snap.width; x += TILE) {
           const piece = {
             x: x, y: y,
-            dx: (Math.random() - .5) * 6,   // سرعة أفقية
-            dy: (Math.random() - .2) * 6,   // سرعة رأسية
+            dx: (Math.random() - 0.5) * 6,
+            dy: (Math.random() - 0.2) * 6,
             rot: 0,
-            dr: (Math.random()-.5)*0.2      // سرعة دوران
+            dr: (Math.random() - 0.5) * 0.2
           };
-          // نحفظ صورة القطعة ذاتها لسرعة الرسم
           piece.img = document.createElement('canvas');
-          piece.img.width = TILE; piece.img.height = TILE;
+          piece.img.width = TILE;
+          piece.img.height = TILE;
           piece.img.getContext('2d')
                .drawImage(snap, x, y, TILE, TILE, 0, 0, TILE, TILE);
           pieces.push(piece);
         }
       }
 
-      // نشغّل طبقة النار
+      // تشغيل طبقة النار
       fire.style.opacity = 1;
 
-      /* أنيميشن سقوط القطع */
+      // أنيميشن سقوط القطع
       const gravity = 0.2;
       function animate () {
-        ctx.clearRect(0,0,burnCanvas.width,burnCanvas.height);
+        ctx.clearRect(0, 0, burnCanvas.width, burnCanvas.height);
         let stillFalling = false;
 
         pieces.forEach(p => {
@@ -99,8 +99,10 @@ window.addEventListener('DOMContentLoaded', () => {
       }
       animate();
 
-      /* بعد مدة نحذف الـ Overlay ونوجّه */
-      setTimeout(()=>{ window.location.href = 'index.html'; }, REDIRECT_AFTER*1000);
+      // بعد مدة قصيرة ننتقل للصفحة التالية
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, REDIRECT_AFTER * 1000);
     });
   }
 });
