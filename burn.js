@@ -1,9 +1,6 @@
-/*  ⚠️ عدّل التوقيتات حسب الريمكس الخاص بك ⚠️  */
-const FIRST_LINE_TIME  = 20;    // أول "I let the world burn"
-const SECOND_LINE_TIME = 23;  // التكرار الذي نبدأ عنده الاحتراق
-const REDIRECT_AFTER   = 2;     // ثوانى بعد الانفجار قبل الانتقال
-
-//------------------------------------------
+const FIRST_LINE_TIME  = 20;   // أول "I let the world burn"
+const SECOND_LINE_TIME = 23;   // لحظة الاحتراق
+const REDIRECT_AFTER   = 2;    // ثوانى بعد الانفجار قبل الانتقال
 
 window.addEventListener('DOMContentLoaded', () => {
   const overlay   = document.getElementById('introOverlay');
@@ -12,39 +9,46 @@ window.addEventListener('DOMContentLoaded', () => {
   const fire      = document.getElementById('fireOverlay');
   const startBtn  = document.getElementById('startBtn');
 
-  /* عند الضغط على زر "بــدأ" */
+  // عند الضغط على زر "بــدأ"
   startBtn.addEventListener('click', () => {
-    startBtn.remove();      // نخفي الزر
-    audio.play();           // نشغّل الصوت
+    startBtn.remove();
+    audio.play();
   });
 
-  /* كل فريم نراقب التوقيت */
   audio.addEventListener('timeupdate', () => {
     const t = audio.currentTime;
 
-    /* إظهار النص بخفّة */
     if (t >= FIRST_LINE_TIME && t < FIRST_LINE_TIME + 1) {
-      lyric.style.opacity = 1;
+      lyric.classList.add('shown');
     }
 
-    /* تحضير الانفجار */
     if (t >= SECOND_LINE_TIME && !overlay.dataset.burning) {
       overlay.dataset.burning = 'true';
-      lyric.style.opacity = 0;
+      lyric.classList.remove('shown');
       startBurnEffect();
     }
   });
 
-  /* التأثير الرئيسى */
   function startBurnEffect () {
-    html2canvas(document.body).then(snap => {
+    const fireVideo = document.getElementById('fireVideo');
+    if (fireVideo) fireVideo.remove();
 
-      // إخفاء كل شيء ما عدا الـ Overlay
+    const fireImage = document.createElement('img');
+    fireImage.src = 'https://media.tenor.com/2cTOgkfVB0UAAAAC/fire.gif';
+    fireImage.style.position = 'absolute';
+    fireImage.style.top = 0;
+    fireImage.style.left = 0;
+    fireImage.style.width = '100%';
+    fireImage.style.height = '100%';
+    fireImage.style.objectFit = 'cover';
+    fireImage.style.zIndex = '-1';
+    document.getElementById('fireOverlay').appendChild(fireImage);
+
+    html2canvas(document.body).then(snap => {
       [...document.body.children].forEach(el => {
         if (el.id !== 'introOverlay') el.style.visibility = 'hidden';
       });
 
-      // نضيف Canvas أعلى الصفحة
       const burnCanvas = document.createElement('canvas');
       burnCanvas.id = 'burnCanvas';
       burnCanvas.width  = snap.width;
@@ -52,12 +56,11 @@ window.addEventListener('DOMContentLoaded', () => {
       overlay.appendChild(burnCanvas);
       const ctx = burnCanvas.getContext('2d');
 
-      // نقطع الصورة إلى مربعات 32×32
       const TILE = 32, pieces = [];
       for (let y = 0; y < snap.height; y += TILE) {
         for (let x = 0; x < snap.width; x += TILE) {
           const piece = {
-            x: x, y: y,
+            x, y,
             dx: (Math.random() - 0.5) * 6,
             dy: (Math.random() - 0.2) * 6,
             rot: 0,
@@ -67,15 +70,13 @@ window.addEventListener('DOMContentLoaded', () => {
           piece.img.width = TILE;
           piece.img.height = TILE;
           piece.img.getContext('2d')
-               .drawImage(snap, x, y, TILE, TILE, 0, 0, TILE, TILE);
+            .drawImage(snap, x, y, TILE, TILE, 0, 0, TILE, TILE);
           pieces.push(piece);
         }
       }
 
-      // تشغيل طبقة النار
       fire.style.opacity = 1;
 
-      // أنيميشن سقوط القطع
       const gravity = 0.2;
       function animate () {
         ctx.clearRect(0, 0, burnCanvas.width, burnCanvas.height);
@@ -89,9 +90,9 @@ window.addEventListener('DOMContentLoaded', () => {
           if (p.y < burnCanvas.height) stillFalling = true;
 
           ctx.save();
-          ctx.translate(p.x + TILE/2, p.y + TILE/2);
+          ctx.translate(p.x + TILE / 2, p.y + TILE / 2);
           ctx.rotate(p.rot);
-          ctx.drawImage(p.img, -TILE/2, -TILE/2);
+          ctx.drawImage(p.img, -TILE / 2, -TILE / 2);
           ctx.restore();
         });
 
@@ -99,7 +100,6 @@ window.addEventListener('DOMContentLoaded', () => {
       }
       animate();
 
-      // بعد مدة قصيرة ننتقل للصفحة التالية
       setTimeout(() => {
         window.location.href = 'index.html';
       }, REDIRECT_AFTER * 1000);
