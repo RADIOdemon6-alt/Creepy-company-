@@ -5,75 +5,105 @@
   <title>Intro – I let the world burn</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- تأثير الاحتراق -->
+  <!-- Burn effect -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
   <script src="burn.js" defer></script>
 
   <style>
-    /* أساسيات الصفحة */
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{background:#000;overflow:hidden;font-family:'Tajawal',sans-serif}
-
-    /* غلاف المقدمة */
-    #introOverlay{
-      position:fixed;inset:0;
-      display:flex;flex-direction:column;
-      justify-content:center;align-items:center;
-      background:#000;z-index:9999;overflow:hidden;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #000;
+      overflow: hidden;
+      font-family: 'Tajawal', sans-serif;
     }
 
-    /* الجملة */
-    #lyricText{
-      font-size:4vw;letter-spacing:3px;text-transform:uppercase;
-      color:#fff;opacity:0;transform:scale(.95);
-      transition:opacity 1s ease,transform 1s ease;
-    }
-    #lyricText.shown{opacity:1;transform:scale(1)}
-
-    /* زر البداية */
-    #startBtn{
-      margin-top:2rem;padding:1rem 2.5rem;font-size:1.4rem;
-      background:#fff;color:#000;border:none;border-radius:12px;
-      cursor:pointer;transition:transform .2s;
-    }
-    #startBtn:hover{transform:scale(1.05)}
-
-    /* طبقة النار بالفيديو */
-    #fireOverlay{
-      position:fixed;inset:0;display:flex;
-      justify-content:center;align-items:center;
-      background:#000;mix-blend-mode:screen;
-      opacity:0;pointer-events:none;z-index:10000;
-      transition:opacity 1s ease;
-    }
-    #fireOverlay video{
-      width:100%;height:100%;object-fit:cover;pointer-events:none;
+    #introOverlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #000;
+      z-index: 9999;
+      overflow: hidden;
     }
 
-    /* كانفاس التكسير */
-    canvas#burnCanvas{
-      position:fixed;inset:0;pointer-events:none;z-index:9998;
+    #lyricText {
+      font-size: 4vw;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0;
+      transform: scale(.95);
+      transition: opacity 1s ease, transform 1s ease;
+      z-index: 10001;
+      position: relative;
+    }
+
+    #lyricText.shown {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    #startBtn {
+      margin-top: 2rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.4rem;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      z-index: 10001;
+    }
+
+    #startBtn:hover {
+      transform: scale(1.05);
+    }
+
+    #fireOverlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      pointer-events: none;
+      opacity: 1;
+      background: #000;
+      mix-blend-mode: screen;
+      overflow: hidden;
+    }
+
+    #fireOverlay video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    canvas#burnCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
     }
   </style>
 </head>
 
 <body>
   <div id="introOverlay">
-
-    <!-- الصوت -->
     <audio id="introAudio"
            src="https://files.catbox.moe/wl4nzf.opus"
            type="audio/ogg"
            preload="auto"
            playsinline></audio>
 
-    <!-- النص -->
     <div id="lyricText">I let the world burn</div>
-
-    <!-- زر البداية -->
     <button id="startBtn">بــدأ</button>
 
-    <!-- طبقة النار بالفيديو -->
     <div id="fireOverlay">
       <video id="fireVideo" autoplay muted loop playsinline>
         <source src="https://files.catbox.moe/vnnjo1.mp4" type="video/mp4">
