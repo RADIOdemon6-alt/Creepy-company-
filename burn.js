@@ -1,5 +1,5 @@
 /*  ⚠️ عدّل التوقيتات حسب الريمكس الخاص بك ⚠️  */
-const FIRST_LINE_TIME  = 22;    // أول "I let the world burn"
+const FIRST_LINE_TIME  = 20;    // أول "I let the world burn"
 const SECOND_LINE_TIME = 23.5;  // التكرار الذي نبدأ عنده الاحتراق
 const REDIRECT_AFTER   = 2;     // ثوانى بعد الانفجار قبل الانتقال
 
