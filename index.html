@@ -6,8 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+<!-- تأثير الاحتراق -->ذ
+<!-- html2canvas لالتقاط سكرين-شوت الصفحة -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+
+<!-- سكربت التأثير -->
+<script src="burn.js" defer></script>
 </head>
 <body>
+  <!-- ─── شاشة المقدّمة ─── -->
+<!-- ─── شاشة المقدّمة ─── -->
+<div id="introOverlay">
+  <audio id="introAudio" src="https://files.catbox.moe/wl4nzf.opus" type="audio/ogg"></audio>
+  <div id="lyricText">I let the world burn</div>
+
+  <!-- نار متحركة فوق القطع -->
+  <div id="fireOverlay"></div>
+</div>
   <!-- شريط علوي -->
   <header class="navbar">
     <div class="container">
