@@ -51,9 +51,13 @@
 
 <body>
   <!-- شاشة المقدمة -->
-  <div id="introOverlay">
-    <audio id="introAudio" src="https://files.catbox.moe/wl4nzf.opus" type="audio/ogg"></audio>
-    <div id="lyricText">I let the world burn</div>
+  <audio id="introAudio"
+       src="https://files.catbox.moe/wl4nzf.opus"
+       type="audio/ogg"
+       preload="auto"
+       autoplay
+       playsinline></audio>
+   <div id="lyricText">I let the world burn</div>
     <div id="fireOverlay"></div>
   </div>
 </body>
