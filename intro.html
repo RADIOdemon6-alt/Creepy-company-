@@ -2,84 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Intro - I let the world burn</title>
+  <title>Intro – I let the world burn</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- تأثير الاحتراق -->
-  <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
   <script src="burn.js" defer></script>
 
   <style>
-    body { margin: 0; background: #000; overflow: hidden; }
-    #introOverlay {
-      position: fixed; inset: 0;
-      background: #000;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      z-index: 9999;
-      overflow: hidden;
+    /* أساسيات الصفحة */
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#000;overflow:hidden;font-family:'Tajawal',sans-serif}
+
+    /* غلاف المقدمة */
+    #introOverlay{
+      position:fixed;inset:0;
+      display:flex;flex-direction:column;
+      justify-content:center;align-items:center;
+      background:#000;z-index:9999;overflow:hidden;
     }
 
-    #lyricText {
-      font-family: 'Tajawal', sans-serif;
-      font-size: 4vw;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #fff;
-      opacity: 0;
-      transition: opacity 1s ease;
+    /* الجملة */
+    #lyricText{
+      font-size:4vw;letter-spacing:3px;text-transform:uppercase;
+      color:#fff;opacity:0;transform:scale(.95);
+      transition:opacity 1s ease,transform 1s ease;
+    }
+    #lyricText.shown{opacity:1;transform:scale(1)}
+
+    /* زر البداية */
+    #startBtn{
+      margin-top:2rem;padding:1rem 2.5rem;font-size:1.4rem;
+      background:#fff;color:#000;border:none;border-radius:12px;
+      cursor:pointer;transition:transform .2s;
+    }
+    #startBtn:hover{transform:scale(1.05)}
+
+    /* طبقة النار بالفيديو */
+    #fireOverlay{
+      position:fixed;inset:0;display:flex;
+      justify-content:center;align-items:center;
+      background:#000;mix-blend-mode:screen;
+      opacity:0;pointer-events:none;z-index:10000;
+      transition:opacity 1s ease;
+    }
+    #fireOverlay video{
+      width:100%;height:100%;object-fit:cover;pointer-events:none;
     }
 
-    #fireOverlay {
-      position: fixed; inset: 0;
-      background: url('assets/fire.gif') center / cover no-repeat;
-      mix-blend-mode: screen;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 10000;
-      transition: opacity 1s ease;
+    /* كانفاس التكسير */
+    canvas#burnCanvas{
+      position:fixed;inset:0;pointer-events:none;z-index:9998;
     }
-
-    canvas#burnCanvas {
-      position: fixed; inset: 0;
-      pointer-events: none;
-      z-index: 9998;
-    }
-    #startBtn {
-  margin-top: 2rem;
-  padding: 1rem 2.5rem;
-  font-size: 1.4rem;
-  background: #fff;
-  color: #000;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-#startBtn:hover {
-  transform: scale(1.05);
-}
   </style>
 </head>
 
 <body>
-  <!-- شاشة المقدمة -->
-  <audio id="introAudio"
-       src="https://files.catbox.moe/wl4nzf.opus"
-       type="audio/ogg"
-       preload="auto"></audio>
-   <div id="lyricText">I let the world burn</div>
   <div id="introOverlay">
-  <audio id="introAudio" …></audio>
-  <div id="lyricText">I let the world burn</div>
 
-  <!-- زر البداية -->
-  <button id="startBtn">بــدأ</button>
+    <!-- الصوت -->
+    <audio id="introAudio"
+           src="https://files.catbox.moe/wl4nzf.opus"
+           type="audio/ogg"
+           preload="auto"
+           playsinline></audio>
 
-  <div id="fireOverlay"></div>
-  </div>
-    <div id="fireOverlay"></div>
+    <!-- النص -->
+    <div id="lyricText">I let the world burn</div>
+
+    <!-- زر البداية -->
+    <button id="startBtn">بــدأ</button>
+
+    <!-- طبقة النار بالفيديو -->
+    <div id="fireOverlay">
+      <video id="fireVideo" autoplay muted loop playsinline>
+        <source src="https://files.catbox.moe/vnnjo1.mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
 </body>
 </html>
