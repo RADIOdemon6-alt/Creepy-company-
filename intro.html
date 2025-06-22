@@ -46,6 +46,20 @@
       pointer-events: none;
       z-index: 9998;
     }
+    #startBtn {
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.4rem;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+#startBtn:hover {
+  transform: scale(1.05);
+}
   </style>
 </head>
 
@@ -54,10 +68,17 @@
   <audio id="introAudio"
        src="https://files.catbox.moe/wl4nzf.opus"
        type="audio/ogg"
-       preload="auto"
-       autoplay
-       playsinline></audio>
+       preload="auto"></audio>
    <div id="lyricText">I let the world burn</div>
+  <div id="introOverlay">
+  <audio id="introAudio" …></audio>
+  <div id="lyricText">I let the world burn</div>
+
+  <!-- زر البداية -->
+  <button id="startBtn">بــدأ</button>
+
+  <div id="fireOverlay"></div>
+  </div>
     <div id="fireOverlay"></div>
   </div>
 </body>
