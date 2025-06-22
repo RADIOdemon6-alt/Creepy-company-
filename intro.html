@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Intro - I let the world burn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- تأثير الاحتراق -->
+  <link rel="stylesheet" href="burn.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  <script src="burn.js" defer></script>
+
+  <style>
+    body { margin: 0; background: #000; overflow: hidden; }
+    #introOverlay {
+      position: fixed; inset: 0;
+      background: #000;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    #lyricText {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 4vw;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #fireOverlay {
+      position: fixed; inset: 0;
+      background: url('assets/fire.gif') center / cover no-repeat;
+      mix-blend-mode: screen;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 10000;
+      transition: opacity 1s ease;
+    }
+
+    canvas#burnCanvas {
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- شاشة المقدمة -->
+  <div id="introOverlay">
+    <audio id="introAudio" src="https://files.catbox.moe/wl4nzf.opus" type="audio/ogg"></audio>
+    <div id="lyricText">I let the world burn</div>
+    <div id="fireOverlay"></div>
+  </div>
+</body>
+</html>
